@@ -22,6 +22,7 @@
       --sb-teal:#13848F;
       --sb-mint:#15FFC8;
       --sb-deep:#1D414E;
+      --sb-coral:#E07A5F;
 
       /* App tokens */
       --bg: var(--sb-deep);
@@ -29,14 +30,28 @@
       --muted: rgba(209,254,255,.85);
       --border: rgba(209,254,255,.18);
       --shadow: 0 10px 30px rgba(0,0,0,.35);
-      --radius:18px;
+      --radius:14px;
       --accent: var(--sb-mint);
+      --accent-warm: var(--sb-coral);
       --danger: var(--sb-teal);
 
+      /* Warm accent tokens */
+      --border-warm: rgba(224,122,95,.40);
+      --color-warm-bg: rgba(224,122,95,.10);
+      --color-warm-border: rgba(224,122,95,.20);
+      --text-warm: rgba(224,122,95,.90);
+
+      /* Section color-coding */
+      --section-coral: #E07A5F;
+      --section-amber: #F2CC8F;
+      --section-teal: #81B29A;
+      --section-lavender: #B8A9C9;
+
       /* Radius scale */
-      --radius-sm: 8px;
-      --radius-md: 12px;
-      --radius-lg: 16px;
+      --radius-xs: 3px;
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 12px;
       --radius-pill: 999px;
 
       /* Animation timing */
@@ -131,13 +146,13 @@
   user-select: none;
 }
 .afChip:hover {
-  background: rgba(21,255,200,.08);
-  border-color: rgba(21,255,200,.35);
+  background: rgba(224,122,95,.08);
+  border-color: rgba(224,122,95,.35);
 }
 .afChip.selected {
-  background: rgba(21,255,200,.16);
-  border-color: var(--sb-mint);
-  box-shadow: 0 0 12px rgba(21,255,200,.20);
+  background: rgba(224,122,95,.16);
+  border-color: var(--sb-coral);
+  box-shadow: 0 0 12px rgba(224,122,95,.20);
   color: #fff;
 }
 .afFunnelSvg {
@@ -159,7 +174,7 @@
 /* --- Scenario card --- */
 .afScenarioCard {
   position: relative;
-  background: linear-gradient(135deg, rgba(0,0,0,.35) 0%, rgba(19,132,143,.12) 100%);
+  background: rgba(0,0,0,.30);
   border: 1.5px solid rgba(209,254,255,.14);
   border-radius: var(--radius-lg);
   padding: 22px 20px 18px;
@@ -167,12 +182,7 @@
   overflow: hidden;
 }
 .afScenarioCard::before {
-  content: '';
-  position: absolute;
-  top: -40%; left: -40%;
-  width: 180%; height: 180%;
-  background: radial-gradient(circle at 30% 30%, rgba(21,255,200,.06) 0%, transparent 60%);
-  pointer-events: none;
+  display: none;
 }
 .afScenarioIcon {
   font-size: 40px;
@@ -239,8 +249,8 @@
   line-height: 1.4;
 }
 .afReactionBtn:hover {
-  background: rgba(21,255,200,.07);
-  border-color: rgba(21,255,200,.3);
+  background: rgba(224,122,95,.07);
+  border-color: rgba(224,122,95,.3);
   transform: translateY(-1px);
 }
 .afReactionBtn:active {
@@ -253,8 +263,8 @@
 
 /* --- Reveal state --- */
 .afRevealCard {
-  background: linear-gradient(135deg, rgba(21,255,200,.08) 0%, rgba(0,0,0,.3) 100%);
-  border: 1.5px solid rgba(21,255,200,.25);
+  background: rgba(224,122,95,.06);
+  border: 1.5px solid rgba(224,122,95,.25);
   border-radius: var(--radius-lg);
   padding: 22px 20px;
   margin-bottom: 14px;
@@ -279,7 +289,7 @@
 .afRevealLabel {
   font-size: var(--text-xl);
   font-weight: 900;
-  color: var(--sb-mint);
+  color: var(--sb-coral);
   margin-bottom: 6px;
   letter-spacing: .3px;
 }
@@ -302,17 +312,20 @@
 
 /* --- Results / Profile --- */
 .afResultsGrid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
   margin: 14px 0;
 }
 .afResultTile {
   background: rgba(0,0,0,.25);
   border: 1.5px solid rgba(209,254,255,.12);
   border-radius: var(--radius-md);
-  padding: 14px 12px;
-  text-align: center;
+  padding: 12px 16px;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 12px;
   animation: afTileIn .4s cubic-bezier(.2,.8,.3,1) both;
 }
 .afResultTile:nth-child(2) { animation-delay: .07s; }
@@ -328,13 +341,13 @@
 .afResultTileName { font-size: 12px; font-weight: 800; color: var(--sb-light); }
 .afResultTileCount {
   font-size: 11px;
-  color: var(--sb-mint);
+  color: var(--sb-coral);
   font-weight: 700;
   margin-top: 2px;
 }
 .afProfileInsight {
-  background: linear-gradient(135deg, rgba(21,255,200,.06) 0%, rgba(0,0,0,.2) 100%);
-  border: 1px solid rgba(21,255,200,.2);
+  background: var(--color-warm-bg);
+  border: 1px solid var(--color-warm-border);
   border-radius: var(--radius-md);
   padding: 16px;
   margin: 14px 0;
@@ -343,7 +356,7 @@
 .afProfileInsight h3 {
   font-size: 14px;
   font-weight: 800;
-  color: var(--sb-mint);
+  color: var(--sb-coral);
   margin: 0 0 8px;
 }
 .afProfileInsight p {
@@ -353,8 +366,8 @@
   margin: 0;
 }
 .afPromptBox {
-  background: rgba(21,255,200,.06);
-  border: 1px solid rgba(21,255,200,.22);
+  background: var(--color-warm-bg);
+  border: 1px solid var(--color-warm-border);
   border-radius: var(--radius-md);
   padding: 16px;
   margin: 14px 0;
@@ -371,12 +384,12 @@
   align-items: center;
   gap: 6px;
   padding: 4px 12px;
-  background: rgba(21,255,200,.08);
-  border: 1px solid rgba(21,255,200,.2);
+  background: rgba(224,122,95,.08);
+  border: 1px solid var(--color-warm-border);
   border-radius: var(--radius-pill);
   font-size: 12px;
   font-weight: 700;
-  color: var(--sb-mint);
+  color: var(--sb-coral);
   margin-bottom: 14px;
 }
 
@@ -416,7 +429,7 @@
   box-sizing: border-box;
 }
 .trTextarea:focus {
-  border-color: rgba(21,255,200,.5);
+  border-color: rgba(224,122,95,.5);
 }
 .trTextarea::placeholder {
   color: rgba(209,254,255,.72);
@@ -441,13 +454,13 @@
   transition: all var(--dur-normal) ease;
 }
 .trEmChip:hover {
-  background: rgba(21,255,200,.08);
-  border-color: rgba(21,255,200,.35);
+  background: rgba(224,122,95,.08);
+  border-color: rgba(224,122,95,.35);
 }
 .trEmChip.selected {
-  background: rgba(21,255,200,.16);
-  border-color: var(--sb-mint);
-  box-shadow: 0 0 10px rgba(21,255,200,.18);
+  background: rgba(224,122,95,.16);
+  border-color: var(--sb-coral);
+  box-shadow: 0 0 10px rgba(224,122,95,.18);
 }
 .trSliderWrap {
   margin: 10px 0;
@@ -470,7 +483,7 @@
 .trSliderVal {
   font-size: 13px;
   font-weight: 800;
-  color: var(--sb-mint);
+  color: var(--sb-coral);
   min-width: 36px;
   text-align: right;
 }
@@ -479,7 +492,7 @@
   appearance: none;
   width: 100%;
   height: 6px;
-  border-radius: 6px;
+  border-radius: var(--radius-sm);
   background: rgba(255,255,255,.10);
   outline: none;
 }
@@ -570,8 +583,8 @@
 
 /* ===== BOUNDARY FLAGS GAME ===== */
 .bfIntro {
-  background: rgba(21,255,200,.07);
-  border: 1px solid rgba(21,255,200,.22);
+  background: var(--color-warm-bg);
+  border: 1px solid var(--color-warm-border);
   border-radius: var(--radius-md);
   padding: 14px 16px;
   font-size: 13px;
@@ -650,9 +663,9 @@
   position: relative;
 }
 .bfScenarioCard:hover {
-  background: rgba(21,255,200,.10);
-  border-color: rgba(21,255,200,.40);
-  box-shadow: 0 0 10px rgba(21,255,200,.12);
+  background: rgba(224,122,95,.08);
+  border-color: rgba(224,122,95,.35);
+  box-shadow: 0 0 10px rgba(224,122,95,.12);
 }
 .bfScenarioCard.selected {
   background: rgba(21,255,200,.14);
@@ -677,7 +690,7 @@
   letter-spacing: .3px;
 }
 .bfScenarioCard.placed .bfCorrectTag { display: inline-block; }
-.bfScenarioCard.correct .bfCorrectTag { background: rgba(21,255,200,.15); color: rgba(109,255,109,.9); }
+.bfScenarioCard.correct .bfCorrectTag { background: rgba(109,255,109,.12); color: rgba(109,255,109,.9); }
 .bfScenarioCard.wrong .bfCorrectTag { background: rgba(255,80,80,.15); color: rgba(255,120,120,.9); }
 
 .bfActiveCard {
@@ -693,9 +706,9 @@
   to { opacity: 1; transform: translateY(0) scale(1); }
 }
 .bfChoiceRow {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 .bfChoiceBtn {
   appearance: none;
@@ -703,7 +716,7 @@
   background: rgba(255,255,255,.04);
   border: 1.5px solid rgba(209,254,255,.14);
   border-radius: var(--radius-md);
-  padding: 16px 10px;
+  padding: 14px 16px;
   cursor: pointer;
   color: var(--text);
   display: flex;
@@ -944,18 +957,18 @@
     }
     /* Selection cards: left accent bar to signal "pick one" */
     .grid > .btn:not(.btnPrimary):not(.btnBack):not(.btnDanger):not(.btnSmall){
-      border-left: 3px solid rgba(21,255,200,.30);
+      border-left: 3px solid rgba(224,122,95,.30);
       padding-left: 13px;
     }
     .grid > .btn:not(.btnPrimary):not(.btnBack):not(.btnDanger):not(.btnSmall):hover{
-      border-left-color: rgba(21,255,200,.80);
+      border-left-color: rgba(224,122,95,.80);
     }
     /* Informational expandables: dashed border + lighter background */
     details.expando{
       border-style: solid;
     }
     .card{
-      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.03));
+      background: rgba(255,255,255,.04);
       border: 1px solid var(--border);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
@@ -965,8 +978,8 @@
     .p{ margin:0 0 12px; color: var(--muted); line-height:1.55; }
     .grid{ display:grid; gap:10px; margin-top: 12px;}
     .note{
-      border-left: 3px solid rgba(21,255,200,.70);
-      background: rgba(21,255,200,.10);
+      border-left: 3px solid rgba(224,122,95,.70);
+      background: rgba(224,122,95,.10);
       padding: 12px 14px;
       border-radius: var(--radius-md);
       color: var(--sb-light);
@@ -1138,12 +1151,12 @@
   gap: 4px;
   margin: 12px 0 6px;
   height: 8px;
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   overflow: hidden;
 }
 .pdSpectrumSeg {
   flex: 1;
-  border-radius: 4px;
+  border-radius: var(--radius-xs);
   transition: opacity var(--dur-slow);
 }
 .pdSpectrumLabels {
@@ -1511,16 +1524,16 @@
     .dsProgressDot {
       height: 4px;
       flex: 1;
-      border-radius: 4px;
+      border-radius: var(--radius-xs);
       background: rgba(255,255,255,.12);
       transition: background var(--dur-slow) ease;
     }
     .dsProgressDot.active {
-      background: var(--sb-mint);
-      box-shadow: 0 0 6px rgba(21,255,200,.5);
+      background: rgba(224,122,95,.85);
+      box-shadow: 0 0 6px rgba(224,122,95,.5);
     }
     .dsProgressDot.done {
-      background: rgba(21,255,200,.45);
+      background: rgba(224,122,95,.40);
     }
     .dsPanel {
       display: flex;
@@ -1806,7 +1819,7 @@
     /* List item with left accent */
     .listItem{
       padding: 10px 14px;
-      border-radius: 8px;
+      border-radius: var(--radius-sm);
       background: rgba(0,0,0,.18);
       border-left: 3px solid rgba(21,255,200,.40);
       font-size: 13px;
@@ -1922,7 +1935,8 @@
     /* Section divider */
     .sectionDivider{
       height: 1px;
-      background: rgba(209,254,255,.10);
+      background: rgba(209,254,255,.14);
+      margin: 10px 0;
       margin: 6px 0;
     }
 
@@ -2478,10 +2492,9 @@
 }
 .bwWrap .inner{ padding: 0 16px 18px 16px; }
 .bwLayout{
-  display:grid; grid-template-columns: 1.25fr .75fr;
-  gap:12px; align-items:start; margin-top:12px;
+  display:flex; flex-direction:column;
+  gap:12px; margin-top:12px;
 }
-@media (max-width:540px){ .bwLayout{ grid-template-columns: 1fr; } }
 .bwWall{
   position:relative; width:100%; height:240px;
   border-radius: var(--radius-md); border:1px solid rgba(209,254,255,.14);
@@ -2506,14 +2519,14 @@
   gap:7px; padding:9px;
 }
 .bwBrick{
-  background: linear-gradient(135deg, #8B4513, #6B3410); border-radius:7px; cursor:grab;
+  background: #7A3D12; border-radius: var(--radius-sm); cursor:grab;
   box-shadow: 0 6px 16px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,180,120,.15);
   border:1px solid rgba(60,20,0,.3);
   transition: background var(--dur-normal), box-shadow var(--dur-normal), transform .1s;
 }
 .bwBrick:active{ cursor:grabbing; transform:scale(1.04); }
 .bwBrick:hover{
-  background: linear-gradient(135deg, #A0522D, #7D4118);
+  background: #8D4A20;
   box-shadow: 0 0 0 2px rgba(255,160,80,.45), 0 6px 16px rgba(0,0,0,.35);
 }
 .bwPile{
@@ -2939,7 +2952,7 @@
   width: 92px;
   transform: translateX(-50%);
   border-radius: var(--radius-pill);
-  background: linear-gradient(180deg, rgba(209,254,255,.10), rgba(0,0,0,.18));
+  background: rgba(209,254,255,.08);
   border: 1px solid rgba(209,254,255,.12);
   box-shadow: inset 0 0 0 1px rgba(0,0,0,.18);
 }
@@ -3090,7 +3103,7 @@
   padding: 14px;
   border-radius: var(--radius-lg);
   border: 1px solid rgba(255,255,255,.14);
-  background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+  background: rgba(255,255,255,.04);
 }
 .pressureTop{
   display:flex;
@@ -3170,9 +3183,9 @@
 .nextGrid { display: grid; gap: 10px; margin-top: 12px; }
 .nextBtn {
   appearance: none;
-  border: 1px solid rgba(21,255,200,.22);
-  border-left: 3px solid rgba(21,255,200,.40);
-  background: linear-gradient(135deg, rgba(21,255,200,.04) 0%, rgba(255,255,255,.03) 100%);
+  border: 1px solid rgba(224,122,95,.22);
+  border-left: 3px solid rgba(224,122,95,.40);
+  background: rgba(255,255,255,.03);
   color: var(--text);
   border-radius: var(--radius-md);
   padding: 14px 16px;
@@ -3188,9 +3201,9 @@
   -webkit-tap-highlight-color: transparent;
 }
 .nextBtn:hover {
-  background: rgba(21,255,200,.12);
-  border-color: rgba(21,255,200,.50);
-  box-shadow: 0 0 10px rgba(21,255,200,.22);
+  background: rgba(224,122,95,.10);
+  border-color: rgba(224,122,95,.50);
+  box-shadow: 0 0 10px rgba(224,122,95,.18);
   transform: translateY(-1px);
 }
 .nextBtn:active { transform: translateY(1px); }
@@ -3344,7 +3357,7 @@
 .ocRoadWrap:active { cursor: grabbing; }
 .ocRoadWrap::-webkit-scrollbar { height: 6px; }
 .ocRoadWrap::-webkit-scrollbar-thumb {
-  background: linear-gradient(90deg, rgba(21,255,200,.40), rgba(19,132,143,.40));
+  background: rgba(21,255,200,.35);
   border-radius: var(--radius-pill);
 }
 .ocRoadWrap::-webkit-scrollbar-track {
@@ -3384,34 +3397,10 @@
   padding: 0 !important;
 }
 
-/* Sky gradient layer on top */
-.ocRoadInner::before {
-  content: "";
-  position: absolute;
-  left: 0; right: 0;
-  top: 0;
-  height: 90px;
-  background: linear-gradient(180deg,
-    rgba(21,255,200,.04) 0%,
-    transparent 100%
-  );
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* Ground gradient layer on bottom */
+/* Sky/ground layers — removed decorative gradients */
+.ocRoadInner::before,
 .ocRoadInner::after {
-  content: "";
-  position: absolute;
-  left: 0; right: 0;
-  bottom: 0;
-  height: 70px;
-  background: linear-gradient(0deg,
-    rgba(21,255,200,.04) 0%,
-    transparent 100%
-  );
-  pointer-events: none;
-  z-index: 0;
+  display: none;
 }
 
 /* Horizontal road band — asphalt texture with lane markings */
@@ -3566,11 +3555,7 @@
   padding: 9px 12px;
   border-radius: var(--radius-md);
   border: 1px solid rgba(21,255,200,.45) !important;
-  background: linear-gradient(135deg,
-    rgba(13,40,50,.92) 0%,
-    rgba(8,26,34,.96) 60%,
-    rgba(13,40,48,.90) 100%
-  ) !important;
+  background: rgba(10,32,42,.94) !important;
   color: rgba(209,254,255,.98);
   font-size: 12px;
   font-weight: 700;
@@ -3599,7 +3584,7 @@
   left: 50%;
   width: 1px;
   transform: translateX(-50%);
-  background: linear-gradient(to var(--oc-connector-dir, bottom), rgba(21,255,200,.50), transparent);
+  background: rgba(21,255,200,.40);
   opacity: .70;
 }
 
@@ -3659,7 +3644,7 @@
   margin-top: 0 !important;
   border-radius: var(--radius-lg);
   padding: 16px;
-  background: linear-gradient(135deg, rgba(13,40,50,.70), rgba(7,22,28,.80));
+  background: rgba(10,30,38,.75);
   border: 1px solid rgba(21,255,200,.18) !important;
   box-shadow: 0 0 20px rgba(21,255,200,.06), inset 0 1px 0 rgba(21,255,200,.08);
 }
@@ -3713,7 +3698,7 @@
 
 /* "Add check-in" button — glowing primary action */
 #ocAddBtn {
-  background: linear-gradient(135deg, rgba(21,255,200,.22), rgba(19,132,143,.18)) !important;
+  background: rgba(21,255,200,.20) !important;
   border-color: rgba(21,255,200,.55) !important;
   box-shadow: 0 0 12px rgba(21,255,200,.15), inset 0 1px 0 rgba(21,255,200,.15) !important;
   color: rgba(209,254,255,1) !important;
@@ -3721,7 +3706,7 @@
   letter-spacing: .2px;
 }
 #ocAddBtn:hover:not(:disabled) {
-  background: linear-gradient(135deg, rgba(21,255,200,.32), rgba(19,132,143,.25)) !important;
+  background: rgba(21,255,200,.30) !important;
   box-shadow: 0 0 20px rgba(21,255,200,.28), inset 0 1px 0 rgba(21,255,200,.20) !important;
   transform: translateY(-1px);
 }
@@ -3737,10 +3722,7 @@
   flex-direction: column;
   border-radius: var(--radius-lg);
   border: 1px solid rgba(21,255,200,.22);
-  background:
-    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(19,132,143,.28) 0%, transparent 70%),
-    radial-gradient(ellipse 60% 40% at 50% 100%, rgba(21,255,200,.08) 0%, transparent 60%),
-    linear-gradient(180deg, #07161a 0%, #0a2028 25%, #0d2a32 50%, #071419 100%);
+  background: #0a2028;
   box-shadow:
     0 0 0 1px rgba(21,255,200,.12),
     0 0 40px rgba(21,255,200,.08),
@@ -3824,7 +3806,7 @@
 .ssColHead{ font-size:11px; font-weight:900; text-transform:uppercase; letter-spacing:.3px; margin-bottom:2px; }
 .ssColDo .ssColHead{ color:var(--sb-mint); }
 .ssColDont .ssColHead{ color:#ff8080; }
-.ssItem{ font-size:13px; color:var(--muted); line-height:1.4; padding:7px 9px; border-radius:8px; background:rgba(0,0,0,.14); }
+.ssItem{ font-size:13px; color:var(--muted); line-height:1.4; padding:7px 9px; border-radius:var(--radius-sm); background:rgba(0,0,0,.14); }
 
 /* ===== Shift the Culture accordion ===== */
 .scAccordion{ display:flex; flex-direction:column; gap:6px; }
@@ -3840,9 +3822,8 @@
 .scBody.scOpen{ max-height:800px; padding:0 14px 12px 42px; }
 
 /* ===== Bystander Intervention cards ===== */
-.biCards{ display:grid; grid-template-columns:1fr 1fr; gap:10px; }
-@media(max-width:480px){ .biCards{ grid-template-columns:1fr; } }
-.biCard{ border-radius: var(--radius-md); border:1px solid rgba(209,254,255,.14); background:rgba(0,0,0,.18); padding:14px; }
+.biCards{ display:flex; flex-direction:column; gap:8px; }
+.biCard{ border-radius: var(--radius-md); border:1px solid rgba(209,254,255,.14); background:rgba(0,0,0,.18); padding:14px 16px; display:flex; gap:14px; align-items:flex-start; }
 .biNum{ font-size:11px; font-weight:900; color:var(--sb-mint); letter-spacing:.4px; margin-bottom:4px; }
 .biTitle{ font-size:15px; font-weight:900; margin-bottom:6px; }
 .biBody{ font-size:13px; color:var(--muted); line-height:1.45; }
@@ -4102,7 +4083,7 @@
 .hrDropZone.green-zone .hrDropZoneLabel { color: rgba(21,255,100,.80); }
 .hrDropZone.red-zone .hrDropZoneLabel { color: rgba(255,80,80,.75); }
 .hrPlacedTag {
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   padding: 5px 8px;
   font-size: 11px;
   font-weight: 700;
@@ -4136,7 +4117,7 @@
   position:relative;
   border-radius: var(--radius-lg);
   overflow:hidden;
-  background:linear-gradient(180deg, rgba(5,15,25,.98), rgba(8,25,38,.97));
+  background:rgba(6,18,30,.98);
   border:1px solid rgba(209,254,255,.14);
   box-shadow:var(--shadow);
   height:260px;
@@ -4152,11 +4133,7 @@
 }
 .rainGlass{
   position:absolute;inset:0;
-  background:linear-gradient(180deg,
-    rgba(209,254,255,.03) 0%,
-    rgba(209,254,255,.01) 60%,
-    rgba(19,132,143,.04) 100%
-  );
+  background:rgba(209,254,255,.02);
   pointer-events:none;
 }
 .rainMsg{
@@ -4191,7 +4168,7 @@
   margin:12px 0;
   border-radius: var(--radius-lg);
   border:1px solid rgba(209,254,255,.14);
-  background:linear-gradient(180deg, rgba(8,20,28,.97), rgba(5,15,22,.99));
+  background:rgba(6,18,24,.98);
   overflow:hidden;
   padding:16px 16px 14px;
   min-height:280px;
@@ -4286,8 +4263,8 @@
   z-index:4;
   position:relative;
   max-width:280px;
-  background:linear-gradient(180deg, transparent, rgba(8,20,28,.85) 30%);
-  border-radius:8px;
+  background:rgba(8,20,28,.75);
+  border-radius:var(--radius-sm);
   padding:6px 10px;
 }
 .crowdMsg.show{ color:rgba(21,255,200,.90); }
@@ -4299,9 +4276,10 @@
 .vjWrap{ margin:12px 0; }
 .vjTiles{
   display:grid;
-  grid-template-columns:1fr 1fr;
+  grid-template-columns:repeat(2, 1fr);
   gap:10px;
 }
+@media(max-width:400px){ .vjTiles{ grid-template-columns:1fr; } }
 .vjTile{
   appearance:none;
   border:1px solid rgba(209,254,255,.18);
@@ -4495,8 +4473,8 @@
   background:rgba(209,254,255,.12);
   transition:background .4s;
 }
-.rejStep.done{ background:var(--sb-mint); }
-.rejStep.active{ background:rgba(21,255,200,.5); }
+.rejStep.done{ background:rgba(224,122,95,.85); }
+.rejStep.active{ background:rgba(224,122,95,.5); }
 
 /* Panel wrapper for each step */
 .rejPanel{ display:none; }
@@ -4718,7 +4696,7 @@
   margin-bottom:14px;
 }
 .rejJTab{
-  flex:1;padding:8px 4px;border-radius:9px;border:none;
+  flex:1;padding:8px 4px;border-radius:var(--radius-sm);border:none;
   font-family:inherit;font-size:11px;font-weight:700;
   color:var(--muted);background:transparent;cursor:pointer;
   transition:all var(--dur-normal);text-align:center;
@@ -4763,7 +4741,7 @@
 }
 .rejAffirmCard::before{
   content:'';position:absolute;width:200px;height:200px;border-radius:50%;
-  background:radial-gradient(circle,rgba(21,255,200,.06),transparent 70%);
+  display:none;
   top:-60px;right:-60px;pointer-events:none;
 }
 .rejAffirmEmoji{ font-size:2rem;margin-bottom:10px;display:block; }
@@ -4849,7 +4827,7 @@
   font-size:12px;
   color:var(--muted);
   padding:8px 10px;
-  border-radius:8px;
+  border-radius:var(--radius-sm);
   border:1px solid rgba(255,120,120,.2);
   background:rgba(255,80,80,.05);
   font-style:italic;
@@ -4863,7 +4841,7 @@
   font-size:13px;
   color:var(--muted);
   padding:8px 12px;
-  border-radius:8px;
+  border-radius:var(--radius-sm);
   border:1px solid rgba(209,254,255,.12);
   background:rgba(21,255,200,.05);
   position:relative;
@@ -4900,7 +4878,7 @@
 .sbSignal:active{ transform:scale(.97); }
 .sbSignal.active{
   border-color:rgba(255,100,60,.60);
-  background:linear-gradient(135deg, rgba(255,80,40,.12), rgba(29,65,78,.18));
+  background:rgba(255,80,40,.10);
   box-shadow:0 0 0 1px rgba(255,100,60,.20), 0 4px 14px rgba(0,0,0,.25);
 }
 .sbSignal.active .sbSignalCheck{ opacity:1; transform:scale(1); }
@@ -4929,8 +4907,7 @@
 }
 .sbMeterFill::after{
   content:''; position:absolute; inset:0;
-  background:linear-gradient(90deg, transparent 60%, rgba(255,255,255,.25));
-  border-radius: var(--radius-pill);
+  display:none;
 }
 .sbReframe{
   border-radius: var(--radius-md); padding:14px 16px;
@@ -4939,7 +4916,7 @@
 }
 .sbReframe.warm{
   border-color:rgba(255,100,60,.35);
-  background:linear-gradient(135deg, rgba(255,60,30,.08), rgba(29,65,78,.15));
+  background:rgba(255,60,30,.06);
 }
 .sbReframeInner{ font-size:13px; line-height:1.5; color:rgba(209,254,255,.82); transition:opacity var(--dur-slow) ease; }
 .sbReframeInner b{ color:rgba(209,254,255,.96); }
@@ -5045,17 +5022,7 @@
   100%{ opacity:1; transform: scale(1) translateY(0); box-shadow: 0 0 18px rgba(21,255,200,.14); }
 }
 .forgedCard::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background: repeating-linear-gradient(
-    -45deg,
-    transparent 0px,
-    transparent 18px,
-    rgba(21,255,200,.025) 18px,
-    rgba(21,255,200,.025) 20px
-  );
-  pointer-events:none;
+  display:none;
 }
 .forgedCardMeta{
   display:flex;
@@ -5085,12 +5052,7 @@
   color: var(--sb-light);
 }
 .forgedCardGlow{
-  position:absolute;
-  bottom:-30px; right:-30px;
-  width:120px; height:120px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(21,255,200,.22), transparent 70%);
-  pointer-events:none;
+  display:none;
 }
 
 /* Pulse on forge */
@@ -5113,8 +5075,8 @@
 .bsCard{position:relative;border-radius: var(--radius-md);overflow:hidden;border:1px solid rgba(209,254,255,.16);box-shadow:0 10px 28px rgba(0,0,0,.38);user-select:none;-webkit-user-select:none;height:88px;}
 .bsCard:focus-within{outline:2px solid var(--sb-mint);outline-offset:2px;}
 .bsSide{position:absolute;inset:0;display:flex;align-items:center;padding:0 18px;}
-.bsSideLeft{background:linear-gradient(110deg,rgba(30,18,18,.97) 0%,rgba(40,25,25,.93) 100%);}
-.bsSideRight{background:linear-gradient(110deg,#0e2d28 0%,#0f3732 100%);}
+.bsSideLeft{background:rgba(34,20,20,.95);}
+.bsSideRight{background:#0e2e2a;}
 .bsSideText{font-size:13px;font-weight:800;line-height:1.3;color:rgba(255,200,200,.88);padding-left:16px;padding-right:32px;}
 .bsReframeText{font-size:13px;font-weight:800;line-height:1.3;color:rgba(209,254,255,.95);padding-left:16px;padding-right:32px;}
 .bsRevealMask{position:absolute;inset:0;overflow:hidden;pointer-events:none;}
@@ -5246,7 +5208,7 @@
       cursor: pointer;
       font-size: 14px;
       padding: 2px 6px;
-      border-radius: 4px;
+      border-radius: var(--radius-xs);
       flex-shrink: 0;
     }
     .crisisBanner button:hover{ background: rgba(255,255,255,.06); }
@@ -5280,7 +5242,7 @@
     #breatheFloatBtn.visible{ display: block; }
 
 /* ===== ALCOHOL / SUBSTANCE DEEP DIVE ===== */
-.alcProgress{display:flex;gap:4px;margin:10px 0 16px;}.alcDot{flex:1;height:4px;border-radius:4px;background:rgba(255,255,255,.10);transition:background var(--dur-slow) ease;}.alcDot.active{background:rgba(255,160,80,.85);box-shadow:0 0 6px rgba(255,160,80,.5);}.alcDot.done{background:rgba(255,160,80,.40);}
+.alcProgress{display:flex;gap:4px;margin:10px 0 16px;}.alcDot{flex:1;height:4px;border-radius:var(--radius-xs);background:rgba(255,255,255,.10);transition:background var(--dur-slow) ease;}.alcDot.active{background:rgba(224,122,95,.85);box-shadow:0 0 6px rgba(224,122,95,.5);}.alcDot.done{background:rgba(224,122,95,.40);}
 .alcScenarioGrid{display:grid;gap:9px;margin:12px 0;}.alcScenarioBtn{appearance:none;border:1px solid rgba(255,180,100,.22);background:rgba(255,140,60,.06);color:var(--text);border-radius: var(--radius-md);padding:14px 16px;cursor:pointer;text-align:left;font-family:inherit;font-weight:700;width:100%;display:flex;align-items:center;gap:12px;transition:transform .06s ease,background .16s ease,border-color .16s ease,box-shadow .16s ease;}.alcScenarioBtn:hover{background:rgba(255,160,80,.14);border-color:rgba(255,160,80,.50);box-shadow:0 0 10px rgba(255,160,80,.18);transform:translateY(-1px);}.alcScenarioBtn:active{transform:translateY(1px);}.alcScenarioIcon{font-size:20px;width:28px;text-align:center;flex-shrink:0;}.alcScenarioText{flex:1;min-width:0;}.alcScenarioLabel{font-size:14px;font-weight:850;color:var(--sb-light);display:block;}.alcScenarioSub{font-size:12px;color:var(--muted);margin-top:2px;display:block;line-height:1.3;}
 .alcMythStack{display:grid;gap:10px;margin:12px 0;}.alcMyth{border-radius: var(--radius-md);border:1px solid rgba(255,180,100,.22);background:rgba(255,140,60,.05);overflow:hidden;cursor:pointer;transition:border-color var(--dur-normal);}.alcMyth.open{border-color:rgba(255,160,80,.50);cursor:default;}.alcMythFront{padding:14px 16px;}.alcMythStatement{font-size:14px;font-weight:900;color:rgba(209,254,255,.95);margin-bottom:6px;line-height:1.3;}.alcMythTap{font-size:11px;color:rgba(255,180,100,.65);font-weight:800;}.alcMythBack{display:none;padding:14px 16px;background:rgba(255,160,80,.07);border-top:1px solid rgba(255,160,80,.18);}.alcMyth.open .alcMythFront .alcMythTap{display:none;}.alcMyth.open .alcMythBack{display:block;}.alcMythVerdict{display:inline-block;padding:3px 10px;border-radius: var(--radius-pill);font-size:11px;font-weight:900;margin-bottom:8px;}.alcMythVerdict.false{background:rgba(200,50,30,.20);border:1px solid rgba(200,80,60,.45);color:rgba(255,160,140,.95);}.alcMythVerdict.partial{background:rgba(255,160,40,.15);border:1px solid rgba(255,180,60,.35);color:rgba(255,210,120,.95);}.alcMythExplain{font-size:12.5px;color:rgba(209,254,255,.85);line-height:1.55;}
 .bacGauge{margin:14px 0;padding:16px;border-radius: var(--radius-lg);border:1px solid rgba(255,180,100,.22);background:rgba(0,0,0,.18);}.bacBar{height:14px;border-radius: var(--radius-pill);background:rgba(255,255,255,.08);overflow:hidden;border:1px solid rgba(255,255,255,.10);margin:10px 0 6px;}.bacFill{height:100%;border-radius: var(--radius-pill);transition:width var(--dur-slow) ease,background var(--dur-slow) ease;}.bacLabels{display:flex;justify-content:space-between;font-size:10px;color:rgba(209,254,255,.72);}.bacSlider{width:100%;margin:12px 0 6px;accent-color:rgba(255,160,80,.85);}.bacZone{margin-top:10px;padding:12px 14px;border-radius: var(--radius-md);font-size:13px;line-height:1.5;transition:background var(--dur-slow) ease,border-color var(--dur-slow) ease;}.bacConsentTag{display:inline-block;padding:3px 10px;border-radius: var(--radius-pill);font-size:11px;font-weight:900;margin-bottom:8px;}
@@ -5298,9 +5260,6 @@
 
   /* Healthy Relationships cycle of abuse grid */
   .hrCycleGrid { grid-template-columns: 1fr !important; }
-
-  /* Vibe Jukebox tiles */
-  .vjTiles { grid-template-columns: 1fr !important; }
 
   /* Accused module feeling grid */
   .accFeelingGrid { grid-template-columns: 1fr !important; }
@@ -5529,7 +5488,7 @@ details.expando summary:focus-visible {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at var(--ripple-x, 50%) var(--ripple-y, 50%), rgba(21,255,200,.25) 0%, transparent 60%);
+  background: rgba(21,255,200,.12);
   opacity: 0;
   transition: opacity var(--dur-slow) ease;
   pointer-events: none;
@@ -5584,6 +5543,80 @@ details.expando summary:focus-visible {
   padding-left: 2px;
 }
 .entryPathGroupLabel:first-child { margin-top: 0; }
+
+/* Section color-coding: group labels */
+.entryPathGroupLabel[data-color="coral"]   { color: #E07A5F; }
+.entryPathGroupLabel[data-color="amber"]   { color: #F2CC8F; }
+.entryPathGroupLabel[data-color="teal"]    { color: #81B29A; }
+.entryPathGroupLabel[data-color="sky"]     { color: #7EB8D4; }
+.entryPathGroupLabel[data-color="lavender"]{ color: #B8A9C9; }
+
+.eyebrow[data-color="coral"]   { color: #E07A5F; }
+.eyebrow[data-color="amber"]   { color: #F2CC8F; }
+.eyebrow[data-color="teal"]    { color: #81B29A; }
+.eyebrow[data-color="sky"]     { color: #7EB8D4; }
+.eyebrow[data-color="lavender"]{ color: #B8A9C9; }
+
+/* Section color-coding: button tints */
+.btn[data-color="coral"] {
+  border-left: 3px solid rgba(224,122,95,.40);
+  background: rgba(224,122,95,.06);
+  padding-left: 13px;
+}
+.btn[data-color="coral"]:hover {
+  background: rgba(224,122,95,.14);
+  border-color: rgba(224,122,95,.55);
+  border-left: 3px solid rgba(224,122,95,.70);
+  box-shadow: 0 0 8px rgba(224,122,95,.20);
+}
+
+.btn[data-color="amber"] {
+  border-left: 3px solid rgba(242,204,143,.35);
+  background: rgba(242,204,143,.05);
+  padding-left: 13px;
+}
+.btn[data-color="amber"]:hover {
+  background: rgba(242,204,143,.12);
+  border-color: rgba(242,204,143,.50);
+  border-left: 3px solid rgba(242,204,143,.65);
+  box-shadow: 0 0 8px rgba(242,204,143,.18);
+}
+
+.btn[data-color="teal"] {
+  border-left: 3px solid rgba(129,178,154,.40);
+  background: rgba(129,178,154,.06);
+  padding-left: 13px;
+}
+.btn[data-color="teal"]:hover {
+  background: rgba(129,178,154,.14);
+  border-color: rgba(129,178,154,.55);
+  border-left: 3px solid rgba(129,178,154,.70);
+  box-shadow: 0 0 8px rgba(129,178,154,.20);
+}
+
+.btn[data-color="sky"] {
+  border-left: 3px solid rgba(126,184,212,.40);
+  background: rgba(126,184,212,.06);
+  padding-left: 13px;
+}
+.btn[data-color="sky"]:hover {
+  background: rgba(126,184,212,.14);
+  border-color: rgba(126,184,212,.55);
+  border-left: 3px solid rgba(126,184,212,.70);
+  box-shadow: 0 0 8px rgba(126,184,212,.20);
+}
+
+.btn[data-color="lavender"] {
+  border-left: 3px solid rgba(184,169,201,.35);
+  background: rgba(184,169,201,.05);
+  padding-left: 13px;
+}
+.btn[data-color="lavender"]:hover {
+  background: rgba(184,169,201,.12);
+  border-color: rgba(184,169,201,.50);
+  border-left: 3px solid rgba(184,169,201,.65);
+  box-shadow: 0 0 8px rgba(184,169,201,.18);
+}
 
 /* ===== CHARACTER COUNTER ===== */
 .charCounter {
@@ -5812,16 +5845,19 @@ details.expando summary:hover {
       A Project of SafeBAE
     </div>
 <div style="text-align:center; margin-top:18px;">
-  <img 
-    src="safebae-logo.png"
-    alt="SafeBAE Logo"
-    style="
-      max-width: 280px;
-      width: 80%;
-      height: auto;
-      opacity: 0.9;
-    "
-  />
+  <a href="https://safebae.org" target="_blank" rel="noopener noreferrer">
+    <img
+      src="safebae-logo.png"
+      alt="SafeBAE Logo"
+      style="
+        max-width: 280px;
+        width: 80%;
+        height: auto;
+        opacity: 0.9;
+        cursor: pointer;
+      "
+    />
+  </a>
 </div>
 
   </div>
@@ -5891,7 +5927,7 @@ function toggleCrisisBanner(){
 function updateFloatBtn(screenId){
   const btn = document.getElementById('breatheFloatBtn');
   if(!btn) return;
-  const hideOn = ['landing','whyThisExists','grounding','pathMenu','about','decoy'];
+  const hideOn = ['landing','whyThisExists','grounding','about'];
   btn.classList.toggle('visible', !hideOn.includes(screenId));
 }
 
@@ -5968,16 +6004,15 @@ function openGroundingFloat(){
   });
 
   // Clean up timer when modal closes
-  const origClose = closeModal;
-  closeModal = function(){
+  __onModalClose = function(){
     if(__floatBreathTimer){ clearInterval(__floatBreathTimer); __floatBreathTimer = null; }
-    closeModal = origClose;
-    origClose();
   };
 }
 function goBack(){
   if(state.history.length){
-    state.screenId=state.history.pop();
+    const prev = state.history.pop();
+    if(!prev){ return; }
+    state.screenId = prev;
     screen.style.opacity='0';
     screen.style.transform='translateY(-6px)';
     screen.style.transition='opacity 100ms ease, transform 100ms ease';
@@ -6016,7 +6051,6 @@ document.addEventListener("click", (e)=>{
 const actions = {
   start: ()=>go("bringsYouHere"),
   whyBtn: ()=>go("whyThisExists"),
-  pathMenu: ()=>go("pathMenu"),
   about: ()=>go("about"),
   restart: ()=>reset(),
   quickExit: ()=>{
@@ -6073,6 +6107,7 @@ const actions = {
 
 // --- Simple modal helpers (uses existing .modalOverlay/.modal CSS) ---
 let __modalEl = null;
+let __onModalClose = null;
 
 function openModal(title, innerHtml){
   closeModal(); // ensure one at a time
@@ -6105,6 +6140,7 @@ function openModal(title, innerHtml){
 }
 
 function closeModal(){
+  if(__onModalClose){ __onModalClose(); __onModalClose = null; }
   if(__modalEl){
     __modalEl.remove();
     __modalEl = null;
@@ -6152,7 +6188,7 @@ function card(h1, ps=[], note=null, content=""){
     ${content}
   `;
 }
-function btn(label, action, cls="btn"){ return `<button class="${cls}" data-action="${action}">${label}</button>`; }
+function btn(label, action, cls="btn", color=""){ return `<button class="${cls}" data-action="${action}"${color ? ` data-color="${color}"` : ''}>${label}</button>`; }
 function btnIcon(label, action, icon, cls="btn"){
   return `<button class="${cls}" data-action="${action}">
     <span class="btnContent">
@@ -6175,7 +6211,8 @@ function entryLabel(entry){
     learn_consent: "you want to understand consent better",
     accidental_assault: "you\u2019re worried you may have hurt someone without meaning to",
     accused: "you\u2019ve been accused of something",
-    friend_pathway: "you think your friend may have done something harmful"
+    friend_pathway: "you think your friend may have done something harmful",
+    knew_harm: "you know what you did was wrong and want to make it right"
   };
   return labels[entry] || "you\u2019re reflecting on something that happened";
 }
@@ -6211,7 +6248,8 @@ function entryTone(entry){
     learn_consent: { opener: "That curiosity is a real strength." },
     accidental_assault: { opener: "That\u2019s a heavy thing to carry. Let\u2019s take it one step at a time." },
     accused: { opener: "That brings up a lot. Let\u2019s work through it carefully." },
-    friend_pathway: { opener: "The fact that you\u2019re thinking about this says something about you." }
+    friend_pathway: { opener: "The fact that you\u2019re thinking about this says something about you." },
+    knew_harm: { opener: "That kind of honesty is rare \u2014 and it matters." }
   };
   return tones[entry] || { opener: "You\u2019re here, and that matters." };
 }
@@ -6269,6 +6307,11 @@ function entryRecommendations(entry){
 }
 
 function mergedRecommendations(scenario, emotion){
+  if(state.entry === "knew_harm"){
+    const base = ["repair","support","shiftThinking"];
+    if(state.emotion === "ashamed" || state.emotion === "anxious") base.unshift("grounding");
+    return base;
+  }
   const baseRecs = scenario ? scenarioRecommendations(scenario) : ["learn","prevent"];
   const entryRecs = state.entry ? entryRecommendations(state.entry) : [];
   const eboosts = emotion ? emotionBoosts(emotion) : [];
@@ -7758,15 +7801,18 @@ function initVibeJukebox(){
         </div>
       </div>
     `;
-    document.getElementById('vjNext')?.addEventListener('click',()=>{ cardIdx++; renderCard(); });
-    document.getElementById('vjDone')?.addEventListener('click',()=>{ 
+    const vjNextBtn = document.getElementById('vjNext');
+    const vjDoneBtn = document.getElementById('vjDone');
+    const vjBackBtn = document.getElementById('vjBack');
+    if(vjNextBtn) vjNextBtn.onclick = ()=>{ cardIdx++; renderCard(); };
+    if(vjDoneBtn) vjDoneBtn.onclick = ()=>{
       const nb = document.querySelector('[data-action="nextSteps"]');
       if(nb) nb.click();
-    });
-    document.getElementById('vjBack')?.addEventListener('click',()=>{
+    };
+    if(vjBackBtn) vjBackBtn.onclick = ()=>{
       tiles.style.display = 'grid';
       content.style.display = 'none';
-    });
+    };
   }
 
   const tileHandlers = [];
@@ -7802,7 +7848,7 @@ function catRunnerMarkup(){
       border:1px solid var(--border);
       border-radius: 16px;
       padding: 12px;
-      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      background: rgba(255,255,255,.04);
       box-shadow: var(--shadow);
     ">
       <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:10px;">
@@ -9365,7 +9411,7 @@ function groundingMarkup(){
         </div>
 
         <div style="display:grid;gap:10px;">
-          <select id="gtAffirmSelect" class="rbTextarea" style="min-height:auto;resize:none;">
+          <select id="gtAffirmSelect" class="rbTextarea" style="min-height:auto;resize:none;" aria-label="Choose an affirmation phrase">
             <option value="I deserve to be loved and happy.">I deserve to be loved and happy.</option>
             <option value="I am safe in this moment.">I am safe in this moment.</option>
             <option value="I can slow down and choose my next step.">I can slow down and choose my next step.</option>
@@ -9373,7 +9419,7 @@ function groundingMarkup(){
             <option value="I can learn and do better next time.">I can learn and do better next time.</option>
           </select>
 
-          <input id="gtAffirmCustom" class="rbTextarea" style="min-height:auto;resize:none;" placeholder="Or write your own phrase…" />
+          <input id="gtAffirmCustom" class="rbTextarea" style="min-height:auto;resize:none;" placeholder="Or write your own phrase…" aria-label="Write your own affirmation phrase" />
 
           <div id="gtAffirmText" style="text-align:center;font-size:16px;font-weight:950;color:rgba(209,254,255,.95);padding:10px 12px;border-radius:14px;border:1px solid rgba(209,254,255,.14);background:rgba(255,255,255,.04);">
             “I deserve to be loved and happy.”
@@ -9454,7 +9500,7 @@ function initGrounding(){
         </div>
 
         <div style="margin-top:10px;display:flex;gap:10px;flex-wrap:wrap;">
-          <input id="gt_${step.key}_in" class="rbTextarea" style="min-height:auto;resize:none;flex:1;" placeholder="Type one thing…" />
+          <input id="gt_${step.key}_in" class="rbTextarea" style="min-height:auto;resize:none;flex:1;" placeholder="Type one thing…" aria-label="Type something you can ${step.key}" />
           <button class="btn btnSmall" type="button" data-gt-add="${step.key}">Add</button>
           <button class="btn btnSmall" type="button" data-gt-clear="${step.key}">Clear</button>
         </div>
@@ -9677,6 +9723,8 @@ function render(){
     H_relationship_why: 4,
     I_not_sure_wanted: 3,
     J_upset_after: 3,
+    J_told_directly: 4,
+    J_upset_said_fine: 4,
     K_not_sure_what: 3,
     M_escalation: 3,
     M_esc_newact_what: 3,
@@ -9720,7 +9768,44 @@ function render(){
     grounding: 4,
     digitalSafety: 6,
     maleYouth: 6,
-    healthyRelationships: 6
+    healthyRelationships: 6,
+    // Learn modules
+    sardModule: 6,
+    consentModule: 6,
+    consentEdu: 6,
+    rapeCulture: 6,
+    // Shift Your Thinking tools
+    shiftThinking: 6,
+    rejection: 6,
+    boundaryFlags: 6,
+    angerFunnel: 6,
+    thoughtRecord: 6,
+    tateTest: 6,
+    theStandard: 6,
+    // Emotion sub-screens
+    emotion_wheel: 4,
+    emotion_multi: 4,
+    emotion_unsure: 4,
+    emotion_body: 4,
+    // Signal board
+    signalBoard: 4,
+    // Friend pathway
+    friend_landing: 1,
+    fp_what_type: 2,
+    fp_secondhand: 2,
+    fp_friend_told: 2,
+    fp_physical_harm: 3,
+    fp_pressure_harm: 3,
+    fp_digital_harm: 3,
+    fp_power_harm: 3,
+    fp_trust_instinct: 3,
+    fp_talk_to_friend: 4,
+    fp_support_affected: 4,
+    fp_enabling: 4,
+    // "I know what I did was wrong" pathway
+    knew_harm_landing: 2,
+    knew_harm_acknowledge: 3,
+    knew_harm_growth: 4
   };
   const totalSteps = 7;
   function progressBar(step){
@@ -9729,7 +9814,7 @@ function render(){
     return `<div style="margin-bottom:12px;">
       <div style="font-size:12px;color:var(--muted);margin-bottom:4px;">Step ${step} of ${totalSteps}</div>
       <div role="progressbar" aria-valuenow="${step}" aria-valuemin="1" aria-valuemax="${totalSteps}" aria-label="Progress: step ${step} of ${totalSteps}" style="height:6px;background:rgba(255,255,255,.08);border-radius:6px;overflow:hidden;">
-        <div style="height:100%;width:${percent}%;background:var(--accent);transition:width .3s ease;border-radius:6px;"></div>
+        <div style="height:100%;width:${percent}%;background:rgba(224,122,95,.85);transition:width .3s ease;border-radius:6px;"></div>
       </div>
     </div>`;
   }
@@ -9803,10 +9888,10 @@ function render(){
     const mainCard = card(
       "Not sure if you crossed a line?",
       [
-        "This is a <b>private</b>, non-punitive reflection tool. You can leave anytime.",
+        "This is a <b>private</b> space to think it through. You can leave anytime.",
         "We're not here to judge you. We're here to help you slow down, learn, and choose safer next steps."
       ],
-      "<b>Privacy:</b> This prototype collects no names, no account info, and stores nothing.",
+      "<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round' style='vertical-align:-2px; margin-right:4px;'><rect x='3' y='11' width='18' height='11' rx='2' ry='2'/><path d='M7 11V7a5 5 0 0 1 10 0v4'/></svg><b>Privacy:</b> Vibe Check collects no names, no account info, and stores nothing.",
       
 `
       <div style="display:flex; flex-direction:column; gap:10px; margin-top:14px;">
@@ -9815,9 +9900,6 @@ function render(){
         </button>
         <button class="btn btnSmall" data-action="whyBtn" style="border-radius:14px; width:100%; padding:12px 14px; font-weight:850;">
           Why this exists
-        </button>
-        <button class="btn btnSmall" data-action="pathMenu" style="border-radius:14px; width:100%; padding:12px 14px; font-weight:850;">
-          Jump to pathways (demo only)
         </button>
       </div>
     `
@@ -9849,19 +9931,21 @@ function render(){
       ["It's okay to not have a clear answer yet."],
       null,
       `<div class="entryPathGrid">
-        <div class="entryPathGroupLabel">Something happened</div>
-        ${btn("I'm worried I might have crossed a boundary","e1")}
-        ${btn("I think I accidentally sexually assaulted someone","e7")}
-        ${btn("The person I was with is mad and I'm worried I did something wrong","e2")}
-        ${btn("I'm not sure if what happened was okay","e3")}
-        <div class="entryPathGroupLabel">Someone told me</div>
-        ${btn("Someone said I made them uncomfortable","e4")}
-        ${btn("I'm being accused of something I didn't do","e8")}
-        <div class="entryPathGroupLabel">I need help understanding</div>
-        ${btn("I don't know how to explain it","e5")}
-        ${btn("I just want to understand consent better","e6")}
-        <div class="entryPathGroupLabel">It's about someone else</div>
-        ${btn("I think my friend did something — and I don't know what to do","e9")}
+        <div class="entryPathGroupLabel" data-color="coral">Something happened</div>
+        ${btn("I'm worried I might have crossed a boundary","e1","btn","coral")}
+        ${btn("I think I accidentally sexually assaulted someone","e7","btn","coral")}
+        ${btn("The person I was with is mad and I'm worried I did something wrong","e2","btn","coral")}
+        ${btn("I'm not sure if what happened was okay","e3","btn","coral")}
+        <div class="entryPathGroupLabel" data-color="amber">Someone told me</div>
+        ${btn("Someone said I made them uncomfortable","e4","btn","amber")}
+        ${btn("I'm being accused of something I didn't do","e8","btn","amber")}
+        <div class="entryPathGroupLabel" data-color="sky">I already know</div>
+        ${btn("I know what I did was wrong \u2014 and I want to make it right","e10","btn","sky")}
+        <div class="entryPathGroupLabel" data-color="teal">I need help understanding</div>
+        ${btn("I don't know how to explain it","e5","btn","teal")}
+        ${btn("I just want to understand consent better","e6","btn","teal")}
+        <div class="entryPathGroupLabel" data-color="lavender">It's about someone else</div>
+        ${btn("I think my friend did something — and I don't know what to do","e9","btn","lavender")}
       </div>`
     );
     actions.e1=()=>{state.entry="crossed_boundary"; go("topScenario");};
@@ -9873,6 +9957,269 @@ function render(){
     actions.e7=()=>{state.entry="accidental_assault"; go("entryDeescalate");};
     actions.e8=()=>{state.entry="accused"; go("accused_landing");};
     actions.e9=()=>{state.entry="friend_pathway"; go("friend_landing");};
+    actions.e10=()=>{state.entry="knew_harm"; go("knew_harm_landing");};
+    return;
+  }
+
+
+  // ===== "I KNOW WHAT I DID WAS WRONG" PATHWAY =====
+
+  var knewHarmDots = function(step) {
+    var steps = ['landing','acknowledge','growth'];
+    return '<div class="alcProgress" style="margin:10px 0 14px;">' +
+      steps.map(function(_,i){
+        return '<div class="alcDot kh-dot ' + (i < step ? 'done' : '') + ' ' + (i === step ? 'active' : '') + '"></div>';
+      }).join('') +
+    '</div>';
+  };
+
+  if(id==="knew_harm_landing"){
+    screen.innerHTML = backBtn() + `
+      <div class="dsHeader">
+        <div class="dsEyebrow">Vibe Check &mdash; Accountability</div>
+        <div class="h1">You already know.</div>
+        <div class="p" style="margin:0;">That&rsquo;s not a small thing to say.</div>
+      </div>
+      ${knewHarmDots(0)}
+      <div class="dsPanel">
+        <div class="p">
+          A lot of people never get here. They explain, minimize, reframe, wait for it to blow over.
+          You didn&rsquo;t do that. You&rsquo;re here &mdash; and that means something.
+        </div>
+        <div class="p">
+          This space won&rsquo;t tell you you&rsquo;re a bad person. It also won&rsquo;t let you off the hook.
+          What it will do is help you figure out what accountability actually looks like.
+        </div>
+
+        <div class="note" style="margin: 0;">
+          <b>What this pathway is for:</b><br>
+          If you already know something happened that was wrong &mdash; not &ldquo;maybe wrong,&rdquo; not &ldquo;it depends&rdquo; &mdash;
+          this is where you go next. We&rsquo;ll move through what acknowledgment means, what growth can look like,
+          and what tools are most likely to help you from here.
+        </div>
+
+        <div class="mutedBox">
+          You don&rsquo;t need to prove anything to use this. Coming here with clarity is enough.
+        </div>
+
+        <div class="dsNavRow">
+          <button class="btn btnPrimary" data-action="continue">I&rsquo;m ready &mdash; let&rsquo;s go &rarr;</button>
+        </div>
+      </div>
+    `;
+    actions.continue=()=>go("knew_harm_acknowledge");
+    actions.back=()=>go("bringsYouHere");
+    return;
+  }
+
+  if(id==="knew_harm_acknowledge"){
+    screen.innerHTML = backBtn() + `
+      <div class="dsHeader">
+        <div class="dsEyebrow">Vibe Check &mdash; Accountability</div>
+        <div class="h1">What acknowledgment actually means</div>
+        <div class="p" style="margin:0;">Not an apology. Not damage control. Something harder than both.</div>
+      </div>
+      ${knewHarmDots(1)}
+      <div class="dsPanel">
+        <!-- Part 1: What it IS -->
+        <div class="callout">
+          <div class="eyebrow eyebrow--mint">What it is</div>
+          <div class="callout__headline">Acknowledgment means owning the impact &mdash; not just the intent.</div>
+          <div class="callout__body mt-sm">
+            Most people, when they hurt someone, lead with intent: &ldquo;I didn&rsquo;t mean to.&rdquo; That&rsquo;s not
+            acknowledgment. That&rsquo;s defense. Acknowledgment starts with the other person&rsquo;s experience &mdash;
+            what happened to them &mdash; and works backward. It says: something I did caused harm. Full stop.
+            Not: something I did caused harm, but I was drunk / confused / going through a hard time.
+          </div>
+        </div>
+
+        <!-- Expandable: The three parts of real acknowledgment -->
+        <details style="border:1px solid rgba(21,255,200,.25); border-radius:14px; overflow:hidden; background:rgba(0,0,0,.18);">
+          <summary style="cursor:pointer; padding:14px 16px; font-size:13.5px; font-weight:900; color:var(--sb-mint); list-style:none; display:flex; justify-content:space-between; align-items:center; gap:8px; user-select:none;">
+            <span>The three parts of real acknowledgment</span>
+            <span style="font-size:18px; color:var(--sb-mint); flex-shrink:0;">&#9662;</span>
+          </summary>
+          <div style="padding:0 16px 16px; border-top:1px solid rgba(21,255,200,.12);">
+            <div style="margin-top:12px; font-size:13px; color:var(--muted); line-height:1.6;">
+              <div class="listItem" style="margin-bottom:8px; border-left-color:rgba(21,255,200,.4);">
+                <b>1. Name what happened.</b> Not vaguely. Specifically. &ldquo;I crossed a boundary&rdquo; is softer
+                than what you probably already know. Saying the real thing &mdash; to yourself, first &mdash; is step one.
+              </div>
+              <div class="listItem" style="margin-bottom:8px; border-left-color:rgba(21,255,200,.4);">
+                <b>2. Separate your feelings from their harm.</b> Your guilt, your shame, your fear &mdash; those
+                are real, and they matter. But they&rsquo;re yours to carry. They don&rsquo;t belong in the middle of
+                acknowledgment. The person you hurt doesn&rsquo;t owe you comfort for your guilt about hurting them.
+              </div>
+              <div class="listItem" style="border-left-color:rgba(21,255,200,.4);">
+                <b>3. Accept that their response is theirs to give.</b> Acknowledgment isn&rsquo;t a transaction.
+                You don&rsquo;t do it to get forgiveness, or closure, or for them to tell you you&rsquo;re a good person.
+                You do it because the harm was real and it deserves to be named. That&rsquo;s the whole job.
+              </div>
+            </div>
+          </div>
+        </details>
+
+        <!-- Expandable: What acknowledgment is NOT -->
+        <details style="border:1px solid rgba(224,122,95,.25); border-radius:14px; overflow:hidden; background:rgba(0,0,0,.18);">
+          <summary style="cursor:pointer; padding:14px 16px; font-size:13.5px; font-weight:900; color:var(--sb-coral); list-style:none; display:flex; justify-content:space-between; align-items:center; gap:8px; user-select:none;">
+            <span>What acknowledgment is NOT</span>
+            <span style="font-size:18px; color:var(--sb-coral); flex-shrink:0;">&#9662;</span>
+          </summary>
+          <div style="padding:0 16px 16px; border-top:1px solid rgba(224,122,95,.12);">
+            <div style="margin-top:12px; font-size:13px; color:var(--muted); line-height:1.6;">
+              <div class="listItem" style="margin-bottom:8px; border-left-color:rgba(255,107,107,.4);">
+                <b>Not self-punishment.</b> Collapsing into shame isn&rsquo;t accountability &mdash; it&rsquo;s avoidance
+                dressed up as remorse. It centers your pain, and it usually ends with the people around
+                you reassuring you instead of the focus staying on the person harmed.
+              </div>
+              <div class="listItem" style="margin-bottom:8px; border-left-color:rgba(255,107,107,.4);">
+                <b>Not a one-time statement.</b> Saying &ldquo;I know what I did was wrong&rdquo; is a starting line,
+                not a finish line. Accountability plays out in behavior over time &mdash; not in a single
+                well-worded message.
+              </div>
+              <div class="listItem" style="border-left-color:rgba(255,107,107,.4);">
+                <b>Not contingent on their response.</b> If they don&rsquo;t forgive you, if they don&rsquo;t want
+                contact, if they never respond &mdash; that doesn&rsquo;t mean the acknowledgment failed. It means you
+                did what was yours to do, and the rest belongs to them.
+              </div>
+            </div>
+          </div>
+        </details>
+
+        <!-- Grounding note -->
+        <div class="afPromptBox" style="margin-top: 0;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" style="display:inline-block;vertical-align:-3px;margin-right:4px;"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="#15FFC8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> <b>One thing to sit with:</b><br><br>
+          If you were to describe what happened &mdash; honestly, without softening it &mdash; what would you actually say?
+          You don&rsquo;t have to write it here. But being able to say it clearly, at least to yourself, is part
+          of what comes next.
+        </div>
+
+        <div class="dsNavRow">
+          <button class="btn btnPrimary" data-action="continue">Continue &rarr;</button>
+        </div>
+      </div>
+    `;
+    actions.continue=()=>go("knew_harm_growth");
+    actions.back=()=>go("knew_harm_landing");
+    return;
+  }
+
+  if(id==="knew_harm_growth"){
+    screen.innerHTML = backBtn() + `
+      <div class="dsHeader">
+        <div class="dsEyebrow">Vibe Check &mdash; Accountability</div>
+        <div class="h1">What growth looks like from here</div>
+        <div class="p" style="margin:0;">Feeling bad isn&rsquo;t the same as changing. Here&rsquo;s the difference.</div>
+      </div>
+      ${knewHarmDots(2)}
+      <div class="dsPanel">
+        <!-- Intro callout -->
+        <div class="callout">
+          <div class="eyebrow eyebrow--mint">The honest truth</div>
+          <div class="callout__headline">Change is a behavior, not a feeling.</div>
+          <div class="callout__body mt-sm">
+            Remorse is real. It means something. But it&rsquo;s the beginning of the work, not the work itself.
+            Growth shows up in what you do differently &mdash; in moments of pressure, confusion, or desire &mdash;
+            not in how much you feel about what happened.
+          </div>
+        </div>
+
+        <!-- Growth markers -->
+        <div style="display:flex; flex-direction:column; gap:10px;">
+
+          <div class="afResultTile">
+            <div>
+              <div class="afResultTileEmoji"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="#15FFC8" stroke-width="2"/><line x1="16.5" y1="16.5" x2="21" y2="21" stroke="#15FFC8" stroke-width="2" stroke-linecap="round"/></svg></div>
+            </div>
+            <div>
+              <div class="afResultTileName">Understanding the pattern, not just the incident</div>
+              <div style="font-size:12px; color:var(--muted); line-height:1.45; margin-top:3px;">
+                Most harmful behavior isn&rsquo;t random. There was a pattern of thought or action that led there &mdash;
+                assumptions, permission-giving, not checking in. Growth means looking at the pattern, not just
+                the outcome.
+              </div>
+            </div>
+          </div>
+
+          <div class="afResultTile">
+            <div>
+              <div class="afResultTileEmoji"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M10 9v6m4-6v6" stroke="#15FFC8" stroke-width="2.5" stroke-linecap="round"/><circle cx="12" cy="12" r="10" stroke="#15FFC8" stroke-width="2"/></svg></div>
+            </div>
+            <div>
+              <div class="afResultTileName">Learning to pause &mdash; before, not after</div>
+              <div style="font-size:12px; color:var(--muted); line-height:1.45; margin-top:3px;">
+                The most meaningful shift isn&rsquo;t what you do after something goes wrong. It&rsquo;s learning to
+                catch yourself in the moment &mdash; when you feel the pull to push forward, to assume, to not ask.
+                That pause is the skill.
+              </div>
+            </div>
+          </div>
+
+          <div class="afResultTile">
+            <div>
+              <div class="afResultTileEmoji"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="#15FFC8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            </div>
+            <div>
+              <div class="afResultTileName">Tolerating discomfort without making it someone else&rsquo;s problem</div>
+              <div style="font-size:12px; color:var(--muted); line-height:1.45; margin-top:3px;">
+                A lot of harm happens because someone couldn&rsquo;t sit with their own discomfort &mdash; rejection,
+                tension, uncertainty &mdash; and tried to resolve it at someone else&rsquo;s expense. Learning to hold
+                that without acting on it is real, measurable growth.
+              </div>
+            </div>
+          </div>
+
+          <div class="afResultTile">
+            <div>
+              <div class="afResultTileEmoji"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M1 4v6h6" stroke="#15FFC8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M23 20v-6h-6" stroke="#15FFC8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15" stroke="#15FFC8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            </div>
+            <div>
+              <div class="afResultTileName">Accountability that doesn&rsquo;t need an audience</div>
+              <div style="font-size:12px; color:var(--muted); line-height:1.45; margin-top:3px;">
+                The test of whether something has actually changed is what you do when nobody&rsquo;s watching &mdash;
+                when it would be easy to slide back, easy to tell yourself it&rsquo;s fine. Accountability that
+                only exists when you&rsquo;re being held to it isn&rsquo;t accountability. It&rsquo;s performance.
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- What this isn't about -->
+        <div class="contentSection cs--warn">
+          <div class="contentSection__head">
+            <span class="contentSection__icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" stroke="#E07A5F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><line x1="12" y1="9" x2="12" y2="13" stroke="#E07A5F" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="17" r="1" fill="#E07A5F"/></svg></span>
+            <span class="contentSection__title">Growth isn&rsquo;t a redemption arc you perform for others</span>
+            <span class="contentSection__chevron">&#x25BE;</span>
+          </div>
+          <div class="contentSection__summary">The work is private before it&rsquo;s public.</div>
+          <div class="contentSection__body">
+            <div class="contentSection__inner">
+              There&rsquo;s a version of accountability that turns into a public display &mdash; posting about what you&rsquo;ve
+              learned, telling mutual friends you&rsquo;re &ldquo;working on it,&rdquo; broadcasting your growth. That can be
+              part of it, eventually. But if the performance comes before the actual change, it&rsquo;s not growth.
+              It&rsquo;s reputation management.<br><br>
+              The person you hurt doesn&rsquo;t need to see you becoming better. You need to actually become better.
+              Those aren&rsquo;t the same thing, and the order matters.
+            </div>
+          </div>
+        </div>
+
+        <!-- Closing prompt before the emotion check-in -->
+        <div class="afPromptBox" style="margin-top:0;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" style="display:inline-block;vertical-align:-3px;margin-right:4px;"><path d="M12 22V10" stroke="#15FFC8" stroke-width="2" stroke-linecap="round"/><path d="M8 14c-2.5-2-3-5.5-1-8 2 1 3.5 3 4 5.5" stroke="#15FFC8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 14c2.5-2 3-5.5 1-8-2 1-3.5 3-4 5.5" stroke="#15FFC8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> <b>Before we ask how you&rsquo;re feeling:</b><br><br>
+          The fact that you came here, read this, and are still reading &mdash; that&rsquo;s not nothing.
+          Most people don&rsquo;t make it this far. What comes next isn&rsquo;t about being perfect.
+          It&rsquo;s about being honest, and doing the work one step at a time.
+        </div>
+
+        <div class="dsNavRow">
+          <button class="btn btnPrimary" data-action="continue">How am I feeling? &rarr;</button>
+        </div>
+      </div>
+    `;
+    actions.continue=()=>go("emotion");
+    actions.back=()=>go("knew_harm_acknowledge");
     return;
   }
 
@@ -9881,6 +10228,7 @@ function render(){
 
   if(id==="friend_landing"){
     screen.innerHTML = backBtn() + `
+      <div class="dsHeader"><div class="dsEyebrow">Vibe Check &mdash; Supporting a Friend</div></div>
       <div class="card">
         <div class="fpHero">
           <div class="fpHeroIcon">👥</div>
@@ -10131,17 +10479,18 @@ function render(){
   if(id==="fp_physical_harm"){
     screen.innerHTML = backBtn() + `
       <div class="card">
-        <div class="h1"><i class="ph-bold ph-stop-circle" aria-hidden="true"></i> Let's name what this is.</div>
-        <div class="p">If your friend was involved in sexual contact that wasn't consensual — that's sexual assault. You don't need to soften it or find a gentler word. Calling it what it is isn't a betrayal of your friend. It's the beginning of taking it seriously.</div>
+        <div class="h1"><i class="ph-bold ph-stop-circle" aria-hidden="true"></i> Take a moment with this.</div>
+        <div class="p">If someone was touched, pressured, or involved in sexual activity without clear consent, that's a serious situation. It may mean a boundary was crossed or someone was harmed.</div>
+        <div class="p">If you're learning about this involving a friend, it can feel confusing or unsettling. The person you know and the situation you're hearing about may not seem to fit together.</div>
         <div class="fpBoundaryBox">
-          <h4>What you might be feeling right now:</h4>
-          Learning this about someone you care about can feel like the ground shifting. You might feel shock, disbelief, anger, confusion, guilt for not seeing it sooner, or grief for the friendship as you knew it. All of that is real and valid. You don't have to have it figured out to move forward.
+          <h4>You might be feeling a lot of things right now:</h4>
+          Shock, disbelief, anger, worry, guilt, or just not knowing what to think. That's normal. Situations like this are messy, and it can take time to process what you've learned.
         </div>
         <div class="fpSignalList">
-          <div class="fpSignal"><span class="fpSignalIcon"><i class="ph-bold ph-eye" aria-hidden="true"></i></span><span>You may want to minimise what happened to protect your friendship or because it doesn't match who you thought your friend was. That instinct is human — but don't let it override what you know.</span></div>
-          <div class="fpSignal"><span class="fpSignalIcon"><i class="ph-bold ph-hand-palm" aria-hidden="true"></i></span><span>You're not the judge, the jury, or the fixer. But you are someone who knows — and that means you have a role. Staying silent sends a message too.</span></div>
-          <div class="fpSignal"><span class="fpSignalIcon"><i class="ph-bold ph-user-circle" aria-hidden="true"></i></span><span>This is too big to carry alone. Talk to a trusted adult — a parent, school counsellor, coach, or mentor. Not to get your friend in trouble, but because you need support too, and because the affected person may need help you can't provide on your own.</span></div>
-          <div class="fpSignal"><span class="fpSignalIcon"><i class="ph-bold ph-lifebuoy" aria-hidden="true"></i></span><span>If you're not sure who to talk to, a crisis line can help you think it through. RAINN (1-800-656-4673) supports both survivors and the people around them — including you.</span></div>
+          <div class="fpSignal"><span class="fpSignalIcon"><i class="ph-bold ph-eye" aria-hidden="true"></i></span><span>It's also common to want to downplay what happened, especially if the person involved is someone you care about. But try to stay honest with yourself about what you heard or saw.</span></div>
+          <div class="fpSignal"><span class="fpSignalIcon"><i class="ph-bold ph-hand-palm" aria-hidden="true"></i></span><span>You don't have to solve this situation on your own. And you're not responsible for deciding exactly what happened. But knowing about something serious does matter.</span></div>
+          <div class="fpSignal"><span class="fpSignalIcon"><i class="ph-bold ph-user-circle" aria-hidden="true"></i></span><span>Talking with a trusted adult — a parent, counselor, coach, or mentor — can help you think through what to do next and make sure everyone involved has the support they may need.</span></div>
+          <div class="fpSignal"><span class="fpSignalIcon"><i class="ph-bold ph-lifebuoy" aria-hidden="true"></i></span><span>If you're unsure where to start, you can also talk anonymously with a trained advocate. RAINN (1-800-656-4673) supports people dealing with situations like this — including friends who are trying to figure out how to respond.</span></div>
         </div>
         <div class="grid" style="margin-top:16px;">
           <button class="btn btnPrimary" data-action="fp_talk_to_friend">How do I talk to my friend about this?</button>
@@ -10420,14 +10769,14 @@ function render(){
           <h4>If they haven't told you directly:</h4>
           <div class="fpAffectedRow"><span class="fpAffectedRowIcon"><i class="ph-bold ph-chat-circle-dots" aria-hidden="true"></i></span><span>A simple check-in — "Hey, I heard something happened and I just wanted to check in on you, no pressure" — can mean everything. You don't need to name what you know. Just open the door.</span></div>
           <div class="fpAffectedRow"><span class="fpAffectedRowIcon"><i class="ph-bold ph-prohibit" aria-hidden="true"></i></span><span>Don't tell them what you know unless they ask — they may not be ready, and having information shared without their control can feel like another violation.</span></div>
-          <div class="fpAffectedRow"><span class="fpAffectedRowIcon">🎧</span><span>If they do bring it up: listen without steering. Don't tell them what to do. Ask "What do you need right now?" and mean it.</span></div>
+          <div class="fpAffectedRow"><span class="fpAffectedRowIcon"><i class="ph-bold ph-headphones" aria-hidden="true"></i></span><span>If they do bring it up: listen without steering. Don't tell them what to do. Ask "What do you need right now?" and mean it.</span></div>
         </div>
 
         <div class="fpAffectedBox" style="margin-top:10px;">
           <h4>If they've told you directly:</h4>
           <div class="fpAffectedRow"><span class="fpAffectedRowIcon"><i class="ph-bold ph-stop-circle" aria-hidden="true"></i></span><span>Don't minimise ("I'm sure he didn't mean it"), investigate ("what were you wearing?"), or rush them ("you should report it").</span></div>
           <div class="fpAffectedRow"><span class="fpAffectedRowIcon"><i class="ph-bold ph-check-circle" aria-hidden="true"></i></span><span>Do say: "I believe you. It's not your fault. I'm here."</span></div>
-          <div class="fpAffectedRow"><span class="fpAffectedRowIcon">🔄</span><span>Ask them what kind of support they want — practical help, someone to talk to, help finding resources, or just company. Let them lead.</span></div>
+          <div class="fpAffectedRow"><span class="fpAffectedRowIcon"><i class="ph-bold ph-arrows-clockwise" aria-hidden="true"></i></span><span>Ask them what kind of support they want — practical help, someone to talk to, help finding resources, or just company. Let them lead.</span></div>
           <div class="fpAffectedRow"><span class="fpAffectedRowIcon"><i class="ph-bold ph-warning" aria-hidden="true"></i></span><span>Maintain their confidentiality unless there's a safety concern. Their story is theirs to tell — not yours to spread, even with good intentions.</span></div>
         </div>
 
@@ -10929,7 +11278,7 @@ function render(){
           Is there anything about how I communicate, read signals, or show up in relationships that I want to be more aware of going forward?
         </div>
         <div class="eyebrow mb-md">You don't have to write anything. But if something comes to mind:</div>
-        <textarea id="accCommitInput" style="width:100%;background:rgba(0,0,0,.2);border:1px solid rgba(209,254,255,.18);border-radius:12px;padding:12px;color:var(--text);font-size:14px;font-family:inherit;resize:none;min-height:80px;line-height:1.5;" maxlength="200" placeholder="One thing I want to be more aware of…"></textarea>
+        <textarea id="accCommitInput" style="width:100%;background:rgba(0,0,0,.2);border:1px solid rgba(209,254,255,.18);border-radius:12px;padding:12px;color:var(--text);font-size:14px;font-family:inherit;resize:none;min-height:80px;line-height:1.5;" maxlength="200" placeholder="One thing I want to be more aware of…" aria-label="Write one thing you want to be more aware of"></textarea>
         <div id="accCommitCounter" class="charCounter">0 / 200</div>
         <div style="margin-top:12px;display:grid;gap:10px;">
           <button class="btn btnPrimary" data-action="nextSteps" id="accCommitBtn">Go to next steps →</button>
@@ -10980,26 +11329,26 @@ function render(){
       ["Pick the one that fits best. You don\'t need to explain."],
       null,
       `<div class="stack--tight mt-lg">
-        <div class="eyebrow eyebrow--muted" style="padding-left:4px;">Reading the moment</div>
-        <button class="btn choiceButton" data-action="s1">They froze or got quiet</button>
-        <button class="btn choiceButton" data-action="s2">They pulled away</button>
-        <button class="btn choiceButton" data-action="s12">They were asleep or half-asleep</button>
-        <button class="btn choiceButton" data-action="s5">They seemed upset or distant afterward</button>
-        <button class="btn choiceButton" data-action="s4">I\'m not sure they really wanted it</button>
-        <button class="btn choiceButton" data-action="s14">They said they regret what happened</button>
+        <div class="eyebrow eyebrow--muted" data-color="teal" style="padding-left:4px;">Reading the moment</div>
+        <button class="btn choiceButton" data-action="s1" data-color="teal">They froze or got quiet</button>
+        <button class="btn choiceButton" data-action="s2" data-color="teal">They pulled away</button>
+        <button class="btn choiceButton" data-action="s12" data-color="teal">They were asleep or half-asleep</button>
+        <button class="btn choiceButton" data-action="s5" data-color="teal">They seemed upset or distant afterward</button>
+        <button class="btn choiceButton" data-action="s4" data-color="teal">I\'m not sure they really wanted it</button>
+        <button class="btn choiceButton" data-action="s14" data-color="teal">They said they regret what happened</button>
         <div class="sectionDivider"></div>
-        <div class="eyebrow eyebrow--muted" style="padding-left:4px;">Pressure or circumstances</div>
-        <button class="btn choiceButton" data-action="s3">We were drinking or using substances</button>
-        <button class="btn choiceButton" data-action="s7">I kept persuading or pressuring them</button>
-        <button class="btn choiceButton" data-action="s8">There was an age or power difference</button>
-        <button class="btn choiceButton" data-action="s11">We were in a relationship and I assumed consent</button>
-        <button class="btn choiceButton" data-action="s13">Things escalated beyond what was agreed &mdash; rougher, different, or further than they expected</button>
+        <div class="eyebrow eyebrow--muted" data-color="amber" style="padding-left:4px;">Pressure or circumstances</div>
+        <button class="btn choiceButton" data-action="s3" data-color="amber">We were drinking or using substances</button>
+        <button class="btn choiceButton" data-action="s7" data-color="amber">I kept persuading or pressuring them</button>
+        <button class="btn choiceButton" data-action="s8" data-color="amber">There was an age or power difference</button>
+        <button class="btn choiceButton" data-action="s11" data-color="amber">We were in a relationship and I assumed consent</button>
+        <button class="btn choiceButton" data-action="s13" data-color="amber">Things escalated beyond what was agreed &mdash; rougher, different, or further than they expected</button>
         <div class="sectionDivider"></div>
-        <div class="eyebrow eyebrow--muted" style="padding-left:4px;">Other</div>
-        <button class="btn choiceButton" data-action="s10">I ignored a clear \'no\'</button>
-        <button class="btn choiceButton" data-action="s9">Something happened digitally (photos/messages)</button>
-        <button class="btn choiceButton" data-action="s15">I made a comment, joke, or remark that made someone uncomfortable</button>
-        <button class="btn choiceButton" data-action="s6" style="opacity:.80;">I\'m still not sure what happened</button>
+        <div class="eyebrow eyebrow--muted" data-color="coral" style="padding-left:4px;">Other</div>
+        <button class="btn choiceButton" data-action="s10" data-color="coral">I ignored a clear \'no\'</button>
+        <button class="btn choiceButton" data-action="s9" data-color="coral">Something happened digitally (photos/messages)</button>
+        <button class="btn choiceButton" data-action="s15" data-color="coral">I made a comment, joke, or remark that made someone uncomfortable</button>
+        <button class="btn choiceButton" data-action="s6" data-color="coral" style="opacity:.80;">I\'m still not sure what happened</button>
       </div>`
     );
     actions.s1=()=>routeScenario("freeze");
@@ -11032,6 +11381,86 @@ function render(){
     '</div>';
   };
 
+  // Step progress helper for the pulled-away module
+  var pulledAwayDots = function(step) {
+    var steps = ['signal','what-to-do'];
+    return '<div class="alcProgress" style="margin:10px 0 14px;">' +
+      steps.map(function(_,i){
+        return '<div class="alcDot ' + (i < step ? 'done' : '') + ' ' + (i === step ? 'active' : '') + '"></div>';
+      }).join('') +
+    '</div>';
+  };
+
+  // Step progress helper for the upset-after module
+  var upsetDots = function(step) {
+    var steps = ['what-happened','what-to-do'];
+    return '<div class="alcProgress" style="margin:10px 0 14px;">' +
+      steps.map(function(_,i){
+        return '<div class="alcDot ' + (i < step ? 'done' : '') + ' ' + (i === step ? 'active' : '') + '"></div>';
+      }).join('') +
+    '</div>';
+  };
+
+  // Step progress helper for the not-sure-wanted module
+  var notSureDots = function(step) {
+    var steps = ['understanding'];
+    return '<div class="alcProgress" style="margin:10px 0 14px;">' +
+      steps.map(function(_,i){
+        return '<div class="alcDot ' + (i < step ? 'done' : '') + ' ' + (i === step ? 'active' : '') + '"></div>';
+      }).join('') +
+    '</div>';
+  };
+
+  // Step progress helper for the regret module
+  var regretDots = function(step) {
+    var steps = ['understanding','how-to-respond'];
+    return '<div class="alcProgress" style="margin:10px 0 14px;">' +
+      steps.map(function(_,i){
+        return '<div class="alcDot ' + (i < step ? 'done' : '') + ' ' + (i === step ? 'active' : '') + '"></div>';
+      }).join('') +
+    '</div>';
+  };
+
+  // Step progress helper for the asleep module
+  var asleepDots = function(step) {
+    var steps = ['understanding'];
+    return '<div class="alcProgress" style="margin:10px 0 14px;">' +
+      steps.map(function(_,i){
+        return '<div class="alcDot ' + (i < step ? 'done' : '') + ' ' + (i === step ? 'active' : '') + '"></div>';
+      }).join('') +
+    '</div>';
+  };
+
+  // Step progress helper for the pressure module
+  var pressureDots = function(step) {
+    var steps = ['what-it-is','the-pattern','accountability'];
+    return '<div class="alcProgress" style="margin:10px 0 14px;">' +
+      steps.map(function(_,i){
+        return '<div class="alcDot ' + (i < step ? 'done' : '') + ' ' + (i === step ? 'active' : '') + '"></div>';
+      }).join('') +
+    '</div>';
+  };
+
+  // Step progress helper for the power-dynamics module
+  var powerDots = function(step) {
+    var steps = ['understanding'];
+    return '<div class="alcProgress" style="margin:10px 0 14px;">' +
+      steps.map(function(_,i){
+        return '<div class="alcDot ' + (i < step ? 'done' : '') + ' ' + (i === step ? 'active' : '') + '"></div>';
+      }).join('') +
+    '</div>';
+  };
+
+  // Step progress helper for the relationship module
+  var relationshipDots = function(step) {
+    var steps = ['understanding','why-it-feels-different'];
+    return '<div class="alcProgress" style="margin:10px 0 14px;">' +
+      steps.map(function(_,i){
+        return '<div class="alcDot ' + (i < step ? 'done' : '') + ' ' + (i === step ? 'active' : '') + '"></div>';
+      }).join('') +
+    '</div>';
+  };
+
   if(id==="A_freeze_whatItMeans"){
     const pathwayNoteA = state.entry
       ? personalNoteHtml('It sounds like <b>' + entryLabel(state.entry) + '</b>. Learning how the freeze response works can help you see what may have really been going on.')
@@ -11039,7 +11468,7 @@ function render(){
     screen.innerHTML = backBtn() + pathwayNoteA + `
       <div class="dsHeader">
         <div class="dsEyebrow">Vibe Check &mdash; Understanding Freeze</div>
-        <div class="h1">&#x1F9CA; When Someone Freezes</div>
+        <div class="h1"><i class="ph ph-snowflake" style="font-size:1.1em;vertical-align:-0.05em;margin-right:4px;"></i> When Someone Freezes</div>
         <div class="p" style="margin:0;">Understanding why this happens &mdash; and what it means.</div>
       </div>
       ${freezeDots(0)}
@@ -11054,7 +11483,7 @@ function render(){
         <div class="stack mt-0 mb-0">
           <div class="contentSection cs--warn">
             <div class="contentSection__head">
-              <span class="contentSection__icon">&#x1F534;</span>
+              <span class="contentSection__icon"><i class="ph ph-lightning"></i></span>
               <span class="contentSection__title">Amygdala &mdash; Threat Response Centre</span>
               <span class="contentSection__chevron">&#x25BE;</span>
             </div>
@@ -11063,7 +11492,7 @@ function render(){
           </div>
           <div class="contentSection">
             <div class="contentSection__head">
-              <span class="contentSection__icon">&#x1F535;</span>
+              <span class="contentSection__icon"><i class="ph ph-brain"></i></span>
               <span class="contentSection__title">Pre-Frontal Cortex (PFC) &mdash; Thinking Brain</span>
               <span class="contentSection__chevron">&#x25BE;</span>
             </div>
@@ -11113,7 +11542,7 @@ function render(){
 
         <div class="contentSection cs--danger">
           <div class="contentSection__head">
-            <span class="contentSection__icon">&#x26A0;&#xFE0F;</span>
+            <span class="contentSection__icon"><i class="ph ph-warning"></i></span>
             <span class="contentSection__title">The self-blame trap</span>
             <span class="contentSection__chevron">&#x25BE;</span>
           </div>
@@ -11147,7 +11576,7 @@ function render(){
         <div class="stack mt-0 mb-lg">
           <div class="contentSection cs--warn">
             <div class="contentSection__head">
-              <span class="contentSection__icon">&#x26D4;</span>
+              <span class="contentSection__icon"><i class="ph ph-prohibit"></i></span>
               <span class="contentSection__title">Freeze &ne; Yes</span>
               <span class="contentSection__chevron">&#x25BE;</span>
             </div>
@@ -11156,7 +11585,7 @@ function render(){
           </div>
           <div class="contentSection">
             <div class="contentSection__head">
-              <span class="contentSection__icon">&#x1F50D;</span>
+              <span class="contentSection__icon"><i class="ph ph-magnifying-glass"></i></span>
               <span class="contentSection__title">If things continued after you noticed it</span>
               <span class="contentSection__chevron">&#x25BE;</span>
             </div>
@@ -11165,7 +11594,7 @@ function render(){
           </div>
           <div class="contentSection">
             <div class="contentSection__head">
-              <span class="contentSection__icon">&#x1F7E2;</span>
+              <span class="contentSection__icon"><i class="ph ph-check-circle"></i></span>
               <span class="contentSection__title">What the signal should have been</span>
               <span class="contentSection__chevron">&#x25BE;</span>
             </div>
@@ -11194,7 +11623,7 @@ if(id==="B_drinking_basics"){
   var pathwayNoteB = state.entry
     ? personalNoteHtml('It sounds like <b>' + entryLabel(state.entry) + '</b>. Understanding how alcohol changes the equation can help you see what was really at play.')
     : '';
-  screen.innerHTML = backBtn() + pathwayNoteB + '<div class="dsHeader"><div class="dsEyebrow" style="color:rgba(255,180,100,.85);">Vibe Check &mdash; Alcohol &amp; Substances</div><div class="h1"><i class="ph-bold ph-beer-bottle"></i> Alcohol Changes Consent</div></div>' + adots(0) + '<div class="stack--loose">' +
+  screen.innerHTML = backBtn() + pathwayNoteB + '<div class="dsHeader"><div class="dsEyebrow">Vibe Check &mdash; Alcohol &amp; Substances</div><div class="h1"><i class="ph-bold ph-beer-bottle"></i> Alcohol Changes Consent</div></div>' + adots(0) + '<div class="stack--loose">' +
     '<div class="contentSection cs--warn"><div class="contentSection__head"><span class="contentSection__icon">\u26A0\uFE0F</span><span class="contentSection__title">The core principle</span><span class="contentSection__chevron">\u25BE</span></div><div class="contentSection__summary"><b>Consent requires the ability to give it.</b> Alcohol and drugs reduce that ability &mdash; and past a certain point, they eliminate it completely.</div><div class="contentSection__body"><div class="contentSection__inner">This isn\u2019t about counting drinks or drawing an exact line. It\u2019s about understanding that <b>impairment changes the equation</b> &mdash; and the more impaired someone is, the less able they are to freely agree to anything.</div></div></div>' +
     '<div class="contentSection"><div class="contentSection__head"><span class="contentSection__icon">\u2696\uFE0F</span><span class="contentSection__title">What the law generally says</span><span class="contentSection__chevron">\u25BE</span></div><div class="contentSection__summary">A person who is incapacitated <b>cannot legally consent</b> to sexual activity.</div><div class="contentSection__body"><div class="contentSection__inner">In most places, a person who is <b>incapacitated</b> &mdash; meaning they can\u2019t understand what\u2019s happening, can\u2019t communicate clearly, or can\u2019t make real decisions because of alcohol or drugs &mdash; <b>cannot legally consent</b> to sexual activity. That applies no matter what happened earlier in the night, no matter what your relationship is, and no matter whether you were also drinking.<div class="note" style="margin:12px 0 0;border-color:rgba(255,100,60,.45);background:rgba(255,80,40,.06);"><b>Important distinction:</b> \u201CIncapacitated\u201D and \u201Chad a few drinks\u201D are not the same thing. But the space between them is where most harm happens &mdash; and navigating that space is your responsibility, not theirs.</div></div></div></div>' +
     '<div class="contentSection"><div class="contentSection__head"><span class="contentSection__icon">\uD83C\uDF7A</span><span class="contentSection__title">Why alcohol is different from other situations</span><span class="contentSection__chevron">\u25BE</span></div><div class="contentSection__summary">Alcohol doesn\u2019t lower the bar for consent &mdash; it raises it.</div><div class="contentSection__body"><div class="contentSection__inner">Alcohol doesn\u2019t just make people looser. It impairs judgment, distorts how people read situations, slows reaction time, and makes it harder to pick up on signals &mdash; for everyone involved.<br><br>Both people might misread what\u2019s happening. But here\u2019s the part that matters: the person pushing things forward carries more responsibility to make sure things are clear. Not less. Alcohol doesn\u2019t lower the bar for consent &mdash; it raises it.<br><br>And here\u2019s a fact worth knowing: alcohol is the <b>most common substance involved in sexual assault</b>. Not because alcohol causes assault &mdash; but because it creates the exact conditions where consent gets blurry, signals get missed, and people act on what they assume instead of what they know.</div></div></div>' +
@@ -11205,7 +11634,7 @@ if(id==="B_drinking_basics"){
 
 if(id==="B_drinking_scenario"){
   var adots=function(s){var a=['basics','scenario','deep','signals','myths','plan'];return '<div class="alcProgress">'+a.map(function(_,i){return '<div class="alcDot '+(i<s?'done':'')+' '+(i===s?'active':'')+'"></div>';}).join('')+'</div>';};
-  screen.innerHTML = backBtn() + '<div class="dsHeader"><div class="dsEyebrow" style="color:rgba(255,180,100,.85);">Vibe Check &mdash; Alcohol &amp; Substances</div><div class="h1">What was the situation?</div><div class="p" style="margin-bottom:0;">Pick the one that fits closest. Each leads somewhere different.</div></div>' + adots(1) + '<div class="alcScenarioGrid"><button class="alcScenarioBtn" data-action="B_both_drunk"><span class="alcScenarioIcon">\uD83C\uDF7B</span><span class="alcScenarioText"><span class="alcScenarioLabel">We were both drinking</span><span class="alcScenarioSub">&ldquo;We were both drunk &mdash; doesn&rsquo;t that cancel out?&rdquo;</span></span></button><button class="alcScenarioBtn" data-action="B_they_drunk"><span class="alcScenarioIcon">\uD83E\uDD74</span><span class="alcScenarioText"><span class="alcScenarioLabel">They were more intoxicated than me</span><span class="alcScenarioSub">I was sober or less drunk &mdash; they were visibly impaired</span></span></button><button class="alcScenarioBtn" data-action="B_i_drunk"><span class="alcScenarioIcon">\uD83E\uDEE0</span><span class="alcScenarioText"><span class="alcScenarioLabel">I was very drunk</span><span class="alcScenarioSub">&ldquo;I don&rsquo;t fully remember&rdquo; or &ldquo;I was out of it too&rdquo;</span></span></button><button class="alcScenarioBtn" data-action="B_drugs"><span class="alcScenarioIcon">\uD83D\uDC8A</span><span class="alcScenarioText"><span class="alcScenarioLabel">Drugs were involved (not just alcohol)</span><span class="alcScenarioSub">Weed, pills, molly, or other substances</span></span></button><button class="alcScenarioBtn" data-action="B_spiked"><span class="alcScenarioIcon">\u26A0\uFE0F</span><span class="alcScenarioText"><span class="alcScenarioLabel">I think they were drugged / drink was spiked</span><span class="alcScenarioSub">Their reaction didn&rsquo;t match how much they drank</span></span></button></div>';
+  screen.innerHTML = backBtn() + '<div class="dsHeader"><div class="dsEyebrow">Vibe Check &mdash; Alcohol &amp; Substances</div><div class="h1">What was the situation?</div><div class="p" style="margin-bottom:0;">Pick the one that fits closest. Each leads somewhere different.</div></div>' + adots(1) + '<div class="alcScenarioGrid"><button class="alcScenarioBtn" data-action="B_both_drunk"><span class="alcScenarioIcon">\uD83C\uDF7B</span><span class="alcScenarioText"><span class="alcScenarioLabel">We were both drinking</span><span class="alcScenarioSub">&ldquo;We were both drunk &mdash; doesn&rsquo;t that cancel out?&rdquo;</span></span></button><button class="alcScenarioBtn" data-action="B_they_drunk"><span class="alcScenarioIcon">\uD83E\uDD74</span><span class="alcScenarioText"><span class="alcScenarioLabel">They were more intoxicated than me</span><span class="alcScenarioSub">I was sober or less drunk &mdash; they were visibly impaired</span></span></button><button class="alcScenarioBtn" data-action="B_i_drunk"><span class="alcScenarioIcon">\uD83E\uDEE0</span><span class="alcScenarioText"><span class="alcScenarioLabel">I was very drunk</span><span class="alcScenarioSub">&ldquo;I don&rsquo;t fully remember&rdquo; or &ldquo;I was out of it too&rdquo;</span></span></button><button class="alcScenarioBtn" data-action="B_drugs"><span class="alcScenarioIcon">\uD83D\uDC8A</span><span class="alcScenarioText"><span class="alcScenarioLabel">Drugs were involved (not just alcohol)</span><span class="alcScenarioSub">Weed, pills, molly, or other substances</span></span></button><button class="alcScenarioBtn" data-action="B_spiked"><span class="alcScenarioIcon">\u26A0\uFE0F</span><span class="alcScenarioText"><span class="alcScenarioLabel">I think they were drugged / drink was spiked</span><span class="alcScenarioSub">Their reaction didn&rsquo;t match how much they drank</span></span></button></div>';
   actions.B_both_drunk = function(){go("B_both_drunk");};
   actions.B_they_drunk = function(){go("B_they_drunk");};
   actions.B_i_drunk = function(){go("B_i_drunk");};
@@ -11216,7 +11645,7 @@ if(id==="B_drinking_scenario"){
 
 // ===== "We were both drinking" =====
 if(id==="B_both_drunk"){
-  screen.innerHTML = backBtn() + '<div class="dsHeader"><div class="dsEyebrow" style="color:rgba(255,180,100,.85);">Alcohol &amp; Consent</div><div class="h1">\u201CWe were both drunk\u201D</div><div class="p" style="margin-bottom:0;">This is the single most common thing people say in this situation. Let\u2019s unpack it honestly.</div></div>' +
+  screen.innerHTML = backBtn() + '<div class="dsHeader"><div class="dsEyebrow">Alcohol &amp; Consent</div><div class="h1">\u201CWe were both drunk\u201D</div><div class="p" style="margin-bottom:0;">This is the single most common thing people say in this situation. Let\u2019s unpack it honestly.</div></div>' +
     '<div class="alcReframeCard"><div style="font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.5px;color:rgba(255,180,100,.85);margin-bottom:10px;">The thought</div><div style="font-size:16px;font-weight:900;color:var(--sb-light);line-height:1.35;">\u201CIf we were both drunk, it\u2019s nobody\u2019s fault \u2014 right?\u201D</div><div class="alcReframeSide myth" style="margin-top:14px;"><div style="font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:.5px;color:rgba(255,140,80,.80);margin-bottom:6px;">Why people think this</div>It seems logical. Equal impairment, equal responsibility. That math feels clean. But it skips something important.</div></div>' +
     '<div class="stack" style="margin-top:14px;">' +
     '<div class="contentSection"><div class="contentSection__head"><span class="contentSection__icon">\u27A1\uFE0F</span><span class="contentSection__title">Who moved things forward?</span><span class="contentSection__chevron">\u25BE</span></div><div class="contentSection__summary">The person who initiated carries more responsibility.</div><div class="contentSection__body"><div class="contentSection__inner">The person who initiated or escalated the sexual activity carries more responsibility for making sure the other person was actually on board \u2014 even if they were also drinking. Starting something puts you in a different position than the person it\u2019s being done to.</div></div></div>' +
@@ -11232,7 +11661,7 @@ if(id==="B_both_drunk"){
 
 // ===== "They were more intoxicated" =====
 if(id==="B_they_drunk"){
-  screen.innerHTML = backBtn() + '<div class="dsHeader"><div class="dsEyebrow" style="color:rgba(255,180,100,.85);">Alcohol &amp; Consent</div><div class="h1">They were more impaired than you.</div></div>' +
+  screen.innerHTML = backBtn() + '<div class="dsHeader"><div class="dsEyebrow">Alcohol &amp; Consent</div><div class="h1">They were more impaired than you.</div></div>' +
     '<div class="contentSection cs--warn" style="margin-top:6px;"><div class="contentSection__head"><span class="contentSection__icon">\u26A0\uFE0F</span><span class="contentSection__title">This matters</span><span class="contentSection__chevron">\u25BE</span></div><div class="contentSection__summary">The less impaired person has greater responsibility for ensuring consent.</div><div class="contentSection__body"><div class="contentSection__inner">When there\u2019s an <b>impairment gap</b> \u2014 when one person is significantly more intoxicated than the other \u2014 the less impaired person has greater responsibility for ensuring consent is present.<br><br>If you were sober or mostly sober and they were visibly drunk, you were in a better position to judge the situation clearly. That means the accountability falls more heavily on you.</div></div></div>' +
     '<div class="contentSection" style="margin-top:14px;"><div class="contentSection__head"><span class="contentSection__icon">\uD83D\uDC41\uFE0F</span><span class="contentSection__title">Signs they may have been too impaired to consent</span><span class="contentSection__chevron">\u25BE</span></div><div class="contentSection__summary">Slurred speech, stumbling, confusion, or passing out are all signals.</div><div class="contentSection__body"><div class="contentSection__inner" style="display:flex;flex-direction:column;gap:6px;"><div class="listItem" style="border-left-color:rgba(255,160,80,.50);">Slurred speech or difficulty forming sentences</div><div class="listItem" style="border-left-color:rgba(255,160,80,.50);">Stumbling, unable to walk steadily, needing physical support</div><div class="listItem" style="border-left-color:rgba(255,160,80,.50);">Confusion about where they were or who you were</div><div class="listItem" style="border-left-color:rgba(255,160,80,.50);">Vomiting or nausea</div><div class="listItem" style="border-left-color:rgba(255,160,80,.50);">Passed out, in and out of consciousness, or falling asleep</div><div class="listItem" style="border-left-color:rgba(255,160,80,.50);">Unable to make decisions (couldn\u2019t find phone, keys, or get home)</div><div class="listItem" style="border-left-color:rgba(255,160,80,.50);">Saying things that didn\u2019t make sense or changing their mind repeatedly</div></div></div></div>' +
     '<div class="note" style="border-color:rgba(255,100,60,.45);background:rgba(255,80,40,.06);margin-top:16px;"><b>If any of these applied:</b> they likely couldn\u2019t consent \u2014 and proceeding in that state is something you need to take seriously.</div><div class="grid" style="margin-top:14px;"><button class="btn btnPrimary" data-action="B_signal_check">Check more signals \u2192</button><button class="btn" data-action="B_bac">Understand impairment levels</button></div>';
@@ -11243,7 +11672,7 @@ if(id==="B_they_drunk"){
 
 // ===== "I was very drunk" =====
 if(id==="B_i_drunk"){
-  screen.innerHTML = backBtn() + '<div class="dsHeader"><div class="dsEyebrow" style="color:rgba(255,180,100,.85);">Alcohol &amp; Consent</div><div class="h1">You were very drunk too.</div></div>' +
+  screen.innerHTML = backBtn() + '<div class="dsHeader"><div class="dsEyebrow">Alcohol &amp; Consent</div><div class="h1">You were very drunk too.</div></div>' +
     '<div class="p" style="margin-top:4px;">This is genuinely confusing \u2014 and it\u2019s worth sitting with honestly. If you were very drunk, you may not fully remember what happened. That <b>doesn\u2019t mean nothing happened</b>. Gaps in your memory don\u2019t erase someone else\u2019s experience.</div>' +
     '<div class="stack" style="margin-top:10px;">' +
     '<div class="contentSection cs--warn"><div class="contentSection__head"><span class="contentSection__icon">\u2194\uFE0F</span><span class="contentSection__title">Two things can be true at once</span><span class="contentSection__chevron">\u25BE</span></div><div class="contentSection__summary">You were impaired. You may still have caused harm.</div><div class="contentSection__body"><div class="contentSection__inner"><div class="listItem" style="border-left-color:rgba(255,160,80,.50);margin-bottom:8px;"><b>You were impaired.</b> Your judgment was off. You may have done things you wouldn\u2019t have done sober.</div><div class="listItem"><b>You may still have caused harm.</b> Even without meaning to. Your impairment explains your choices \u2014 but it doesn\u2019t delete the impact those choices had on someone else.</div></div></div></div>' +
@@ -11257,7 +11686,7 @@ if(id==="B_i_drunk"){
 
 // ===== Drugs involved =====
 if(id==="B_drugs"){
-  screen.innerHTML = backBtn() + '<div class="dsHeader"><div class="dsEyebrow" style="color:rgba(255,180,100,.85);">Alcohol &amp; Substances</div><div class="h1">Other substances were involved.</div></div>' +
+  screen.innerHTML = backBtn() + '<div class="dsHeader"><div class="dsEyebrow">Alcohol &amp; Substances</div><div class="h1">Other substances were involved.</div></div>' +
     '<div class="p" style="margin-top:4px;">Everything that applies to alcohol applies to other substances \u2014 often more intensely. Many drugs impair consent capacity in ways that are harder to detect from the outside.</div>' +
     '<div class="stack" style="margin-top:10px;">' +
     '<div class="contentSection"><div class="contentSection__head"><span class="contentSection__icon">\uD83C\uDF3F</span><span class="contentSection__title">Weed / Cannabis</span><span class="contentSection__chevron">\u25BE</span></div><div class="contentSection__summary">Can make people passive or detached \u2014 \u201Cgoing along\u201D isn\u2019t the same as choosing.</div><div class="contentSection__body"><div class="contentSection__inner">Someone who\u2019s very high might \u201Cgo along\u201D with things without actively choosing them \u2014 not because they\u2019re into it, but because the drug has dulled their ability to engage or resist. At high doses, it can impair judgment just as much as alcohol.</div></div></div>' +
@@ -11319,7 +11748,7 @@ if(id==="B_spiked"){
 
 // ===== BAC Awareness interactive gauge =====
 if(id==="B_bac_awareness"){
-  screen.innerHTML = backBtn() + '<div class="dsHeader"><div class="dsEyebrow" style="color:rgba(255,180,100,.85);">Alcohol &amp; Consent</div><div class="h1">Understanding Impairment</div><div class="p" style="margin-bottom:0;">This isn&rsquo;t about memorizing blood alcohol levels. It&rsquo;s about recognizing what impairment actually does to someone&rsquo;s ability to say yes and mean it.</div></div><div class="bacGauge"><div style="display:flex;align-items:center;justify-content:space-between;gap:10px;"><div style="font-weight:900;font-size:13px;letter-spacing:.2px;">Impairment Level</div><div id="bacLevelLabel" style="font-weight:900;font-size:12px;color:var(--sb-light);padding:5px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.14);background:rgba(0,0,0,.18);">Slide to explore</div></div><div class="bacBar"><div class="bacFill" id="bacFill" style="width:10%;background:rgba(21,255,200,.70);"></div></div><input class="bacSlider" id="bacSlider" type="range" min="0" max="4" step="1" value="0" aria-label="Set impairment level" /><div class="bacLabels"><span>Sober</span><span>Buzzed</span><span>Tipsy</span><span>Drunk</span><span>Incapacitated</span></div><div class="bacZone" id="bacZone" style="border:1px solid rgba(21,255,200,.30);background:rgba(21,255,200,.06);"><div class="bacConsentTag" id="bacConsentTag" style="background:rgba(21,255,200,.15);border:1px solid rgba(21,255,200,.40);color:var(--sb-mint);">Consent possible</div><div id="bacDesc" style="font-size:13px;color:var(--sb-light);line-height:1.5;"><b>Sober:</b> Clear judgment, full awareness of surroundings and partner. This is where consent is most reliable.</div></div></div><div class="note" style="border-color:rgba(255,160,80,.45);background:rgba(255,120,40,.06);"><b>The key insight:</b> There&rsquo;s no magic drink number where a switch flips. But the further along that spectrum someone is, the less their &ldquo;yes&rdquo; actually means &mdash; and the more responsibility falls on the person who&rsquo;s more sober to stop. If you&rsquo;re looking for the exact line so you can get as close to it as possible, you&rsquo;re asking the wrong question.</div><div class="grid" style="margin-top:14px;"><button class="btn btnPrimary" data-action="B_signal_check">Check the signals &rarr;</button><button class="btn" data-action="goBack">&larr; Back</button></div>';
+  screen.innerHTML = backBtn() + '<div class="dsHeader"><div class="dsEyebrow">Alcohol &amp; Consent</div><div class="h1">Understanding Impairment</div><div class="p" style="margin-bottom:0;">This isn&rsquo;t about memorizing blood alcohol levels. It&rsquo;s about recognizing what impairment actually does to someone&rsquo;s ability to say yes and mean it.</div></div><div class="bacGauge"><div style="display:flex;align-items:center;justify-content:space-between;gap:10px;"><div style="font-weight:900;font-size:13px;letter-spacing:.2px;">Impairment Level</div><div id="bacLevelLabel" style="font-weight:900;font-size:12px;color:var(--sb-light);padding:5px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.14);background:rgba(0,0,0,.18);">Slide to explore</div></div><div class="bacBar"><div class="bacFill" id="bacFill" style="width:10%;background:rgba(21,255,200,.70);"></div></div><input class="bacSlider" id="bacSlider" type="range" min="0" max="4" step="1" value="0" aria-label="Set impairment level" /><div class="bacLabels"><span>Sober</span><span>Buzzed</span><span>Tipsy</span><span>Drunk</span><span>Incapacitated</span></div><div class="bacZone" id="bacZone" style="border:1px solid rgba(21,255,200,.30);background:rgba(21,255,200,.06);"><div class="bacConsentTag" id="bacConsentTag" style="background:rgba(21,255,200,.15);border:1px solid rgba(21,255,200,.40);color:var(--sb-mint);">Consent possible</div><div id="bacDesc" style="font-size:13px;color:var(--sb-light);line-height:1.5;"><b>Sober:</b> Clear judgment, full awareness of surroundings and partner. This is where consent is most reliable.</div></div></div><div class="note" style="border-color:rgba(255,160,80,.45);background:rgba(255,120,40,.06);"><b>The key insight:</b> There&rsquo;s no magic drink number where a switch flips. But the further along that spectrum someone is, the less their &ldquo;yes&rdquo; actually means &mdash; and the more responsibility falls on the person who&rsquo;s more sober to stop. If you&rsquo;re looking for the exact line so you can get as close to it as possible, you&rsquo;re asking the wrong question.</div><div class="grid" style="margin-top:14px;"><button class="btn btnPrimary" data-action="B_signal_check">Check the signals &rarr;</button><button class="btn" data-action="goBack">&larr; Back</button></div>';
 
   (function(){
     var slider=document.getElementById("bacSlider"),fill=document.getElementById("bacFill"),zone=document.getElementById("bacZone"),tag=document.getElementById("bacConsentTag"),desc=document.getElementById("bacDesc"),label=document.getElementById("bacLevelLabel");
@@ -11359,7 +11788,7 @@ if(id==="B_signal_check"){
 
   screen.innerHTML = backBtn() + `
     <div class="dsHeader">
-      <div class="dsEyebrow" style="color:rgba(255,180,100,.85);">Alcohol &amp; Consent</div>
+      <div class="dsEyebrow">Alcohol &amp; Consent</div>
       <div class="h1">Honest Signal Check</div>
       <div class="p" style="margin-bottom:0;">Tap each one that was true. This is for you \u2014 nobody else sees it.</div>
     </div>
@@ -11441,7 +11870,7 @@ if(id==="B_myths"){
 
   screen.innerHTML = backBtn() + `
     <div class="dsHeader">
-      <div class="dsEyebrow" style="color:rgba(255,180,100,.85);">Alcohol &amp; Consent</div>
+      <div class="dsEyebrow">Alcohol &amp; Consent</div>
       <div class="h1">Myths vs. Reality</div>
       <div class="p" style="margin-bottom:0;">Tap each to see the truth. These are the rationalizations that let harm continue.</div>
     </div>
@@ -11474,7 +11903,7 @@ if(id==="B_safety_plan"){
 
   screen.innerHTML = backBtn() + `
     <div class="dsHeader">
-      <div class="dsEyebrow" style="color:rgba(255,180,100,.85);">Alcohol &amp; Consent</div>
+      <div class="dsEyebrow">Alcohol &amp; Consent</div>
       <div class="h1">Your Safety Plan</div>
       <div class="p" style="margin-bottom:0;">Concrete commitments \u2014 not abstract rules. Pick the ones you\u2019ll actually do.</div>
     </div>
@@ -11598,10 +12027,11 @@ if(id==="B_drinking_rule"){
       : '';
     screen.innerHTML = backBtn() + pathwayNoteC + `
       <div class="dsHeader">
-        <div class="dsEyebrow">Vibe Check &mdash; Reading the Moment</div>
-        <div class="h1">&#x21A9;&#xFE0F; Pulling away is information.</div>
+        <div class="dsEyebrow">Vibe Check &mdash; Pulling Away</div>
+        <div class="h1"><i class="ph-bold ph-arrow-bend-up-left" aria-hidden="true"></i> Pulling away is information.</div>
         <div class="p" style="margin:0;">Not everything gets said out loud. Here&rsquo;s how to read what actually matters.</div>
       </div>
+      ${pulledAwayDots(0)}
       <div class="dsPanel">
         <div class="p" style="margin-top:4px;">
           Not everyone says &ldquo;no&rdquo; out loud. Some people pull away, tense up, go quiet, or disengage &mdash; because they&rsquo;re uncomfortable, unsure, or don&rsquo;t feel safe. Their body is saying what their mouth isn&rsquo;t.
@@ -11610,16 +12040,16 @@ if(id==="B_drinking_rule"){
 
         <div class="eyebrow eyebrow--muted" style="margin:14px 0 8px;">What &ldquo;pulling away&rdquo; actually looks like</div>
         <div style="display:flex; flex-direction:column; gap:7px; margin-bottom:14px;">
-          <div style="display:flex; align-items:flex-start; gap:10px; font-size:13px; color:var(--muted); padding:10px 12px; border-radius:12px; border:1px solid var(--border); background:rgba(21,255,200,.03); line-height:1.5;"><span style="flex-shrink:0;">&#x21A9;&#xFE0F;</span><span><b>Turning or shifting their body away</b> &mdash; Physically orienting away from you, even slightly, is the body saying <em>I want distance.</em></span></div>
-          <div style="display:flex; align-items:flex-start; gap:10px; font-size:13px; color:var(--muted); padding:10px 12px; border-radius:12px; border:1px solid var(--border); background:rgba(21,255,200,.03); line-height:1.5;"><span style="flex-shrink:0;">&#x1F91A;</span><span><b>Removing or redirecting your hands</b> &mdash; Lifting your hand off them, pushing it aside, or moving it somewhere neutral. This is a no in action.</span></div>
-          <div style="display:flex; align-items:flex-start; gap:10px; font-size:13px; color:var(--muted); padding:10px 12px; border-radius:12px; border:1px solid var(--border); background:rgba(21,255,200,.03); line-height:1.5;"><span style="flex-shrink:0;">&#x1F636;</span><span><b>Going quiet or still out of nowhere</b> &mdash; If things were flowing and then suddenly they go flat, silent, or expressionless &mdash; something changed. Don&rsquo;t ignore the change just because you liked where things were heading.</span></div>
-          <div style="display:flex; align-items:flex-start; gap:10px; font-size:13px; color:var(--muted); padding:10px 12px; border-radius:12px; border:1px solid var(--border); background:rgba(21,255,200,.03); line-height:1.5;"><span style="flex-shrink:0;">&#x1FAE5;</span><span><b>Checking out mentally</b> &mdash; Eyes distant, responses short, body present but person absent. Dissociation is a protective response, not enthusiasm.</span></div>
-          <div style="display:flex; align-items:flex-start; gap:10px; font-size:13px; color:var(--muted); padding:10px 12px; border-radius:12px; border:1px solid var(--border); background:rgba(21,255,200,.03); line-height:1.5;"><span style="flex-shrink:0;">&#x1F4AA;</span><span><b>Tensing up</b> &mdash; A body that stiffens when touched is not a body welcoming touch. Tension is the nervous system saying <em>this doesn&rsquo;t feel safe.</em></span></div>
+          <div style="display:flex; align-items:flex-start; gap:10px; font-size:13px; color:var(--muted); padding:10px 12px; border-radius:12px; border:1px solid var(--border); background:rgba(21,255,200,.03); line-height:1.5;"><span style="flex-shrink:0;"><i class="ph-bold ph-arrow-bend-up-left" aria-hidden="true" style="font-size:18px; color:var(--sb-mint);"></i></span><span><b>Turning or shifting their body away</b> &mdash; Physically orienting away from you, even slightly, is the body saying <em>I want distance.</em></span></div>
+          <div style="display:flex; align-items:flex-start; gap:10px; font-size:13px; color:var(--muted); padding:10px 12px; border-radius:12px; border:1px solid var(--border); background:rgba(21,255,200,.03); line-height:1.5;"><span style="flex-shrink:0;"><i class="ph-bold ph-hand-palm" aria-hidden="true" style="font-size:18px; color:var(--sb-mint);"></i></span><span><b>Removing or redirecting your hands</b> &mdash; Lifting your hand off them, pushing it aside, or moving it somewhere neutral. This is a no in action.</span></div>
+          <div style="display:flex; align-items:flex-start; gap:10px; font-size:13px; color:var(--muted); padding:10px 12px; border-radius:12px; border:1px solid var(--border); background:rgba(21,255,200,.03); line-height:1.5;"><span style="flex-shrink:0;"><i class="ph-bold ph-speaker-slash" aria-hidden="true" style="font-size:18px; color:var(--sb-mint);"></i></span><span><b>Going quiet or still out of nowhere</b> &mdash; If things were flowing and then suddenly they go flat, silent, or expressionless &mdash; something changed. Don&rsquo;t ignore the change just because you liked where things were heading.</span></div>
+          <div style="display:flex; align-items:flex-start; gap:10px; font-size:13px; color:var(--muted); padding:10px 12px; border-radius:12px; border:1px solid var(--border); background:rgba(21,255,200,.03); line-height:1.5;"><span style="flex-shrink:0;"><i class="ph-bold ph-eye-slash" aria-hidden="true" style="font-size:18px; color:var(--sb-mint);"></i></span><span><b>Checking out mentally</b> &mdash; Eyes distant, responses short, body present but person absent. Dissociation is a protective response, not enthusiasm.</span></div>
+          <div style="display:flex; align-items:flex-start; gap:10px; font-size:13px; color:var(--muted); padding:10px 12px; border-radius:12px; border:1px solid var(--border); background:rgba(21,255,200,.03); line-height:1.5;"><span style="flex-shrink:0;"><i class="ph-bold ph-lightning" aria-hidden="true" style="font-size:18px; color:var(--sb-mint);"></i></span><span><b>Tensing up</b> &mdash; A body that stiffens when touched is not a body welcoming touch. Tension is the nervous system saying <em>this doesn&rsquo;t feel safe.</em></span></div>
         </div>
 
         <div class="contentSection cs--warn">
           <div class="contentSection__head">
-            <span class="contentSection__icon">\u26A0\uFE0F</span>
+            <span class="contentSection__icon"><i class="ph-bold ph-warning" aria-hidden="true"></i></span>
             <span class="contentSection__title">The rationalization that lets people keep going</span>
             <span class="contentSection__chevron">\u25BE</span>
           </div>
@@ -11633,7 +12063,7 @@ if(id==="B_drinking_rule"){
 
         <div class="contentSection">
           <div class="contentSection__head">
-            <span class="contentSection__icon">\u{1F910}</span>
+            <span class="contentSection__icon"><i class="ph-bold ph-lock" aria-hidden="true"></i></span>
             <span class="contentSection__title">Why they didn\u2019t just say \u201Cno\u201D</span>
             <span class="contentSection__chevron">\u25BE</span>
           </div>
@@ -11659,10 +12089,11 @@ if(id==="B_drinking_rule"){
   if(id==="C_pulledAway_script"){
     screen.innerHTML = backBtn() + `
       <div class="dsHeader">
-        <div class="dsEyebrow">Vibe Check &mdash; Reading the Moment</div>
-        <div class="h1">&#x23F9; What to do when you notice it</div>
+        <div class="dsEyebrow">Vibe Check &mdash; Pulling Away</div>
+        <div class="h1"><i class="ph-bold ph-stop-circle" aria-hidden="true"></i> What to do when you notice it</div>
         <div class="p" style="margin:0;">In the moment, and going forward.</div>
       </div>
+      ${pulledAwayDots(1)}
       <div class="dsPanel">
 
         <div class="infoBox" style="margin-bottom:12px;">
@@ -11676,24 +12107,24 @@ if(id==="B_drinking_rule"){
 
         <div class="contentSection">
           <div class="contentSection__head">
-            <span class="contentSection__icon">\u{1F4AC}</span>
+            <span class="contentSection__icon"><i class="ph-bold ph-chat-text" aria-hidden="true"></i></span>
             <span class="contentSection__title">What to say \u2014 and what not to say</span>
             <span class="contentSection__chevron">\u25BE</span>
           </div>
           <div class="contentSection__summary">Keep it simple and low-pressure. Make it easy for them to answer honestly.</div>
           <div class="contentSection__body"><div class="contentSection__inner">
             <div style="display:flex; flex-direction:column; gap:8px;">
-              <div style="padding:10px 12px; border-radius:10px; border:1px solid rgba(21,255,200,.25); background:rgba(21,255,200,.08); font-size:13px; color:var(--muted); line-height:1.45;"><span style="font-weight:900; font-size:11px; text-transform:uppercase; letter-spacing:.4px; color:var(--sb-mint); display:block; margin-bottom:4px;">\u2705 Say this</span>\u201CHey \u2014 are you okay? We can totally stop.\u201D</div>
-              <div style="padding:10px 12px; border-radius:10px; border:1px solid rgba(21,255,200,.25); background:rgba(21,255,200,.08); font-size:13px; color:var(--muted); line-height:1.45;"><span style="font-weight:900; font-size:11px; text-transform:uppercase; letter-spacing:.4px; color:var(--sb-mint); display:block; margin-bottom:4px;">\u2705 Say this</span>\u201CI want to make sure you\u2019re into this. Are you good?\u201D</div>
-              <div style="padding:10px 12px; border-radius:10px; border:1px solid rgba(255,100,80,.30); background:rgba(255,80,60,.06); font-size:13px; color:var(--muted); line-height:1.45;"><span style="font-weight:900; font-size:11px; text-transform:uppercase; letter-spacing:.4px; color:rgba(255,160,110,.85); display:block; margin-bottom:4px;">\u274C Not this</span>\u201CAre you sure? You seemed into it before.\u201D \u2014 This is pressure, not a check-in.</div>
-              <div style="padding:10px 12px; border-radius:10px; border:1px solid rgba(255,100,80,.30); background:rgba(255,80,60,.06); font-size:13px; color:var(--muted); line-height:1.45;"><span style="font-weight:900; font-size:11px; text-transform:uppercase; letter-spacing:.4px; color:rgba(255,160,110,.85); display:block; margin-bottom:4px;">\u274C Not this</span>\u201CWhy did you pull away? Did I do something wrong?\u201D \u2014 Centers your feelings, not theirs.</div>
+              <div style="padding:10px 12px; border-radius:10px; border:1px solid rgba(21,255,200,.25); background:rgba(21,255,200,.08); font-size:13px; color:var(--muted); line-height:1.45;"><span style="font-weight:900; font-size:11px; text-transform:uppercase; letter-spacing:.4px; color:var(--sb-mint); display:block; margin-bottom:4px;"><i class="ph-bold ph-check-circle" aria-hidden="true" style="vertical-align:-1px;"></i> Say this</span>\u201CHey \u2014 are you okay? We can totally stop.\u201D</div>
+              <div style="padding:10px 12px; border-radius:10px; border:1px solid rgba(21,255,200,.25); background:rgba(21,255,200,.08); font-size:13px; color:var(--muted); line-height:1.45;"><span style="font-weight:900; font-size:11px; text-transform:uppercase; letter-spacing:.4px; color:var(--sb-mint); display:block; margin-bottom:4px;"><i class="ph-bold ph-check-circle" aria-hidden="true" style="vertical-align:-1px;"></i> Say this</span>\u201CI want to make sure you\u2019re into this. Are you good?\u201D</div>
+              <div style="padding:10px 12px; border-radius:10px; border:1px solid rgba(255,100,80,.30); background:rgba(255,80,60,.06); font-size:13px; color:var(--muted); line-height:1.45;"><span style="font-weight:900; font-size:11px; text-transform:uppercase; letter-spacing:.4px; color:rgba(255,160,110,.85); display:block; margin-bottom:4px;"><i class="ph-bold ph-x-circle" aria-hidden="true" style="vertical-align:-1px;"></i> Not this</span>\u201CAre you sure? You seemed into it before.\u201D \u2014 This is pressure, not a check-in.</div>
+              <div style="padding:10px 12px; border-radius:10px; border:1px solid rgba(255,100,80,.30); background:rgba(255,80,60,.06); font-size:13px; color:var(--muted); line-height:1.45;"><span style="font-weight:900; font-size:11px; text-transform:uppercase; letter-spacing:.4px; color:rgba(255,160,110,.85); display:block; margin-bottom:4px;"><i class="ph-bold ph-x-circle" aria-hidden="true" style="vertical-align:-1px;"></i> Not this</span>\u201CWhy did you pull away? Did I do something wrong?\u201D \u2014 Centers your feelings, not theirs.</div>
             </div>
           </div></div>
         </div>
 
         <div class="contentSection cs--warn">
           <div class="contentSection__head">
-            <span class="contentSection__icon">\u{1F6A8}</span>
+            <span class="contentSection__icon"><i class="ph-bold ph-warning-circle" aria-hidden="true"></i></span>
             <span class="contentSection__title">If this already happened and you kept going</span>
             <span class="contentSection__chevron">\u25BE</span>
           </div>
@@ -11725,7 +12156,7 @@ if(id==="B_drinking_rule"){
     const pathwayNoteD = state.entry
       ? personalNoteHtml('It sounds like <b>' + entryLabel(state.entry) + '</b>. Pressure can be subtle \u2014 this will help you look at what was really happening in the moment.')
       : '';
-    screen.innerHTML = backBtn() + pathwayNoteD + card(
+    screen.innerHTML = backBtn() + pathwayNoteD + `<div class="dsHeader"><div class="dsEyebrow">Vibe Check &mdash; Pressure &amp; Persuasion</div></div>` + pressureDots(0) + card(
       "Pressure and persuasion",
       [
         "Repeatedly asking, convincing, bargaining, or emotionally pressuring someone can undermine consent.",
@@ -11748,7 +12179,7 @@ if(id==="B_drinking_rule"){
 
   // ===== Branch D — Wearing down / attrition =====
   if(id==="D_pressure_attrition"){
-    screen.innerHTML = backBtn() + card(
+    screen.innerHTML = backBtn() + pressureDots(1) + card(
       "When “fine” isn’t a yes",
       ["There’s a pattern that’s easy to miss because no single moment feels like pressure — but the pattern as a whole is."],
       null,
@@ -11800,6 +12231,7 @@ if(id==="B_drinking_rule"){
       <div class="dsHeader">
         <div class="h1">If this is what happened</div>
       </div>
+      ${pressureDots(2)}
       <div class="dsPanel">
         <div class="p" style="margin-top:4px;">
           If you&rsquo;re reading this and recognizing yourself in it &mdash; that&rsquo;s not a comfortable moment. The instinct right now is probably to soften it. &ldquo;I was just being persistent.&rdquo; &ldquo;I wasn&rsquo;t aggressive about it.&rdquo; &ldquo;They could have said no harder.&rdquo;
@@ -11873,8 +12305,11 @@ if(id==="B_drinking_rule"){
     const pathwayNoteE = state.entry
       ? personalNoteHtml('It sounds like <b>' + entryLabel(state.entry) + '</b>. Power imbalances don\u2019t always look obvious \u2014 this will help you see the fuller picture.')
       : '';
-    screen.innerHTML = backBtn() + pathwayNoteE + `
-      <div class="h1"><i class="ph-bold ph-scales" aria-hidden="true"></i> Power Dynamics & Consent</div>
+    screen.innerHTML = backBtn() + pathwayNoteE + powerDots(0) + `
+      <div class="dsHeader">
+        <div class="dsEyebrow">Vibe Check &mdash; Power Dynamics</div>
+        <div class="h1"><i class="ph-bold ph-scales" aria-hidden="true"></i> Power Dynamics & Consent</div>
+      </div>
       <div class="pdIntro">
         Power imbalances don't have to involve physical force or a huge age gap to affect consent.
         When one person has more power — social, emotional, financial, or physical — the other person
@@ -12030,12 +12465,27 @@ if(id==="B_drinking_rule"){
   }
 
   // ===== New Branch F (Digital) — Entry =====
+
+  // Step progress helper for the digital module
+  var digitalDots = function(step) {
+    var steps = ['what-happened','understanding'];
+    return '<div class="alcProgress" style="margin:10px 0 14px;">' +
+      steps.map(function(_,i){
+        return '<div class="alcDot ' + (i < step ? 'done' : '') + ' ' + (i === step ? 'active' : '') + '"></div>';
+      }).join('') +
+    '</div>';
+  };
+
   if(id==="F_digital"){
     const pathwayNoteF = state.entry
       ? personalNoteHtml('It sounds like <b>' + entryLabel(state.entry) + '</b>. What happens on a screen can carry just as much weight \u2014 let\u2019s look at why.')
       : '';
     screen.innerHTML = backBtn() + pathwayNoteF + `
-      <div class="h1"><i class="ph-bold ph-device-mobile" aria-hidden="true"></i> Something happened digitally</div>
+      <div class="dsHeader">
+        <div class="dsEyebrow">Vibe Check &mdash; Digital Consent</div>
+        <div class="h1"><i class="ph-bold ph-device-mobile" aria-hidden="true"></i> Something happened digitally</div>
+      </div>
+      ${digitalDots(0)}
       <div class="p" style="margin-bottom:4px;">Digital consent is real consent. What specifically happened?</div>
       <div class="note" style="margin-bottom:16px; font-size:13px;">
         Choose the option that most closely fits. You can come back and explore others.
@@ -12099,6 +12549,7 @@ if(id==="B_drinking_rule"){
   if(id==="F_shared"){
     screen.innerHTML = backBtn() + `
       <div class="h1">📤 Sharing without permission</div>
+      ${digitalDots(1)}
       <div class="p">Forwarding, posting, or sending someone's intimate images or private messages — even once, even to one person — is a serious violation of their privacy and trust.</div>
 
       <div style="background:rgba(0,0,0,.2); border:1px solid rgba(209,254,255,.12); border-radius:14px; padding:14px 16px; margin:12px 0;">
@@ -12135,6 +12586,7 @@ if(id==="B_drinking_rule"){
   if(id==="F_saved"){
     screen.innerHTML = backBtn() + `
       <div class="h1">💾 Saving without permission</div>
+      ${digitalDots(1)}
       <div class="p">If someone sent you intimate images or private messages — and you saved or screenshotted them without their knowledge or consent — that's a violation of the trust they placed in you, even if you haven't shared them with anyone.</div>
 
       <div style="background:rgba(0,0,0,.2); border:1px solid rgba(209,254,255,.12); border-radius:14px; padding:14px 16px; margin:12px 0;">
@@ -12168,6 +12620,7 @@ if(id==="B_drinking_rule"){
   if(id==="F_pressured"){
     screen.innerHTML = backBtn() + `
       <div class="h1"><i class="ph-bold ph-chat-circle-dots" aria-hidden="true"></i> Pressuring someone to send images</div>
+      ${digitalDots(1)}
       <div class="p">Asking someone repeatedly, guilting them, threatening consequences, or making them feel like they "owe" you — these are all forms of coercion. An image sent under pressure is not consent.</div>
 
       <div style="background:rgba(0,0,0,.2); border:1px solid rgba(209,254,255,.12); border-radius:14px; padding:14px 16px; margin:12px 0;">
@@ -12212,6 +12665,7 @@ if(id==="B_drinking_rule"){
   if(id==="F_posted"){
     screen.innerHTML = backBtn() + `
       <div class="h1">🌐 Posting about someone's sexual behavior</div>
+      ${digitalDots(1)}
       <div class="p">Sharing details about someone's sexual activity, body, or intimate behavior publicly — even without images — is a form of sexual harm. It can be just as devastating as sharing photos.</div>
 
       <div style="background:rgba(0,0,0,.2); border:1px solid rgba(209,254,255,.12); border-radius:14px; padding:14px 16px; margin:12px 0;">
@@ -12246,6 +12700,7 @@ if(id==="B_drinking_rule"){
   if(id==="F_blackmail"){
     screen.innerHTML = backBtn() + `
       <div class="h1"><i class="ph-bold ph-warning" aria-hidden="true"></i> Using images or info as leverage</div>
+      ${digitalDots(1)}
       <div class="note" style="background:rgba(255,80,80,.08); border-color:rgba(255,80,80,.35); margin-bottom:14px; font-size:13px;">
         This is called <b>sextortion</b> — and it is a serious crime in most places, including under federal law in the United States. If this applies to you, it's important to understand the full weight of what happened.
       </div>
@@ -12277,12 +12732,27 @@ if(id==="B_drinking_rule"){
   }
 
   // ===== Branch G (Coercion) — Entry =====
+
+  // Step progress helper for the coercion module
+  var coercionDots = function(step) {
+    var steps = ['what-happened','understanding'];
+    return '<div class="alcProgress" style="margin:10px 0 14px;">' +
+      steps.map(function(_,i){
+        return '<div class="alcDot ' + (i < step ? 'done' : '') + ' ' + (i === step ? 'active' : '') + '"></div>';
+      }).join('') +
+    '</div>';
+  };
+
   if(id==="G_coercion"){
     const pathwayNoteG = state.entry
       ? personalNoteHtml('It sounds like <b>' + entryLabel(state.entry) + '</b>. Looking honestly at what it means to push past a no is hard \u2014 and it\u2019s one of the most important things you can do right now.')
       : '';
     screen.innerHTML = backBtn() + pathwayNoteG + `
-      <div class="h1"><i class="ph-bold ph-stop-circle" aria-hidden="true"></i> Ignoring a clear 'no'</div>
+      <div class="dsHeader">
+        <div class="dsEyebrow">Vibe Check &mdash; Ignoring a No</div>
+        <div class="h1"><i class="ph-bold ph-stop-circle" aria-hidden="true"></i> Ignoring a clear 'no'</div>
+      </div>
+      ${coercionDots(0)}
       <div class="p">A no — spoken clearly — ends the moment. That's not a rule that bends for context, mood, or history. What matters now is understanding exactly what happened, so you can be honest with yourself about it.</div>
       <div class="note" style="margin-bottom:16px; font-size:13px;">
         Before you continue: notice if part of you is already looking for a reason this doesn't fully apply to your situation. That pull toward minimizing is worth paying attention to.
@@ -12324,6 +12794,7 @@ if(id==="B_drinking_rule"){
   if(id==="G_verbal_no"){
     screen.innerHTML = backBtn() + `
       <div class="h1">🗣️ Continuing after a verbal no</div>
+      ${coercionDots(1)}
       <div class="p">Hearing someone say no — and continuing — is sexual assault. That framing may feel harsh, but it's the accurate one. This screen isn't here to make you spiral; it's here to make sure you understand the full weight of what you're sitting with.</div>
 
       <div style="background:rgba(0,0,0,.2); border:1px solid rgba(209,254,255,.12); border-radius:14px; padding:14px 16px; margin:12px 0;">
@@ -12374,6 +12845,7 @@ if(id==="B_drinking_rule"){
   if(id==="G_stopped_restarted"){
     screen.innerHTML = backBtn() + `
       <div class="h1">🔄 Stopping — then starting again</div>
+      ${coercionDots(1)}
       <div class="p">Stopping when someone says no and then re-initiating without a new, clear yes is still a consent violation. The pause doesn't reset things. Their no was still in effect.</div>
 
       <div style="background:rgba(0,0,0,.2); border:1px solid rgba(209,254,255,.12); border-radius:14px; padding:14px 16px; margin:12px 0;">
@@ -12414,6 +12886,7 @@ if(id==="B_drinking_rule"){
   if(id==="G_persuaded"){
     screen.innerHTML = backBtn() + `
       <div class="h1"><i class="ph-bold ph-chat-circle-dots" aria-hidden="true"></i> Pushing until they gave in</div>
+      ${coercionDots(1)}
       <div class="p">When someone says no and you argue, negotiate, guilt, or wear them down until they stop resisting — that's coercion. What you received at the end was not consent; it was exhaustion or fear.</div>
 
       <div style="background:rgba(0,0,0,.2); border:1px solid rgba(209,254,255,.12); border-radius:14px; padding:14px 16px; margin:12px 0;">
@@ -12461,6 +12934,7 @@ if(id==="B_drinking_rule"){
   if(id==="G_nonverbal"){
     screen.innerHTML = backBtn() + `
       <div class="h1">😶 When the no wasn't said out loud</div>
+      ${coercionDots(1)}
       <div class="p">Consent isn't only communicated through words. A person who is tense, silent, pulling away, going still, or clearly not present is communicating something — and continuing when those signals are present is a consent violation, even if no verbal no was ever spoken.</div>
 
       <div style="background:rgba(0,0,0,.2); border:1px solid rgba(209,254,255,.12); border-radius:14px; padding:14px 16px; margin:12px 0;">
@@ -12515,8 +12989,11 @@ if(id==="B_drinking_rule"){
     const pathwayNoteH = state.entry
       ? personalNoteHtml('It sounds like <b>' + entryLabel(state.entry) + '</b>. Being in a relationship changes a lot of things \u2014 but it doesn\u2019t change what consent requires. Let\u2019s look at that.')
       : '';
-    screen.innerHTML = backBtn() + pathwayNoteH + `
-      <div class="h1">Assuming consent in a relationship</div>
+    screen.innerHTML = backBtn() + pathwayNoteH + relationshipDots(0) + `
+      <div class="dsHeader">
+        <div class="dsEyebrow">Vibe Check &mdash; Relationship Consent</div>
+        <div class="h1">Assuming consent in a relationship</div>
+      </div>
       <div class="p">Being in a relationship with someone doesn&rsquo;t mean consent is automatic. It doesn&rsquo;t carry over from last time. It doesn&rsquo;t exist in the background like a standing agreement. It needs to be there each time &mdash; and it can change in the middle of something, not just at the start.</div>
       <div class="p">This is the one that trips up the most people &mdash; because it feels like once you&rsquo;re with someone, certain things are just understood. But &ldquo;understood&rdquo; and &ldquo;agreed to&rdquo; aren&rsquo;t the same thing. And the gap between them is where a lot of harm happens in relationships, even between people who genuinely care about each other.</div>
       <div class="note" style="margin-bottom:14px;">If you assumed yes without actually checking &mdash; the move isn&rsquo;t to spiral about it. It&rsquo;s to build a different habit: ask clearly, slow down, and take a &ldquo;not right now&rdquo; at face value the first time. That&rsquo;s not a downgrade to your relationship. That&rsquo;s an upgrade to how you operate in it.</div>
@@ -12557,6 +13034,7 @@ if(id==="B_drinking_rule"){
       <div class="dsHeader">
         <div class="h1">Why it feels different in a relationship</div>
       </div>
+      ${relationshipDots(1)}
       <div class="dsPanel">
         <div class="p" style="margin-top:4px;">
           Relationships create a feeling of assumed access &mdash; and that feeling is so built-in that most people never question it. It seems obvious that once you&rsquo;re with someone, you don&rsquo;t need to ask every single time. You know each other. You know what they like. You can read them.
@@ -12640,7 +13118,7 @@ if(id==="B_drinking_rule"){
     const pathwayNoteI = state.entry
       ? personalNoteHtml('It sounds like <b>' + entryLabel(state.entry) + '</b>. That kind of uncertainty can be uncomfortable to sit with &mdash; but being honest about it is where real reflection starts.')
       : '';
-    screen.innerHTML = backBtn() + pathwayNoteI + card(
+    screen.innerHTML = backBtn() + pathwayNoteI + `<div class="dsHeader"><div class="dsEyebrow">Vibe Check &mdash; Uncertainty &amp; Desire</div></div>` + notSureDots(0) + card(
       "Not sure they wanted it",
       ["That uncertainty is information. The fact that you&rsquo;re questioning it means something felt off &mdash; and that matters."],
       null,
@@ -12713,7 +13191,7 @@ if(id==="B_drinking_rule"){
           </div>
         </details>
 
-        <div style="margin-top:6px; border-radius:16px; overflow:hidden; border:1.5px solid rgba(21,255,200,.45); background: linear-gradient(160deg, rgba(21,255,200,.10), rgba(19,132,143,.08));">
+        <div style="margin-top:6px; border-radius:var(--radius-lg); overflow:hidden; border:1.5px solid rgba(21,255,200,.45); background: rgba(21,255,200,.08);">
           <div style="padding:14px 16px 12px; border-bottom:1px solid rgba(21,255,200,.18);">
             <div style="font-size:10px; font-weight:900; text-transform:uppercase; letter-spacing:1px; color:var(--sb-mint); margin-bottom:6px;">The Standard</div>
             <div style="font-size:18px; font-weight:900; color:var(--sb-light); line-height:1.2;">Consent should be <em>unmistakable.</em></div>
@@ -12744,7 +13222,7 @@ if(id==="B_drinking_rule"){
     const pathwayNoteJ = state.entry
       ? personalNoteHtml('It sounds like <b>' + entryLabel(state.entry) + '</b>. When someone shuts down or pulls away after something happened, that reaction is telling you something. Let&rsquo;s look at what it might mean.')
       : '';
-    screen.innerHTML = backBtn() + pathwayNoteJ + card(
+    screen.innerHTML = backBtn() + pathwayNoteJ + `<div class="dsHeader"><div class="dsEyebrow">Vibe Check &mdash; Aftermath &amp; Emotional Signals</div></div>` + upsetDots(0) + card(
       "They seemed upset afterward",
       [
         "If someone became distant, upset, or quiet afterward, that can be a sign they didn&rsquo;t feel okay about what happened.",
@@ -12771,7 +13249,7 @@ if(id==="B_drinking_rule"){
 
   // ===== Branch J1 — "They told me directly" =====
   if(id==="J_told_directly"){
-    screen.innerHTML = backBtn() + card(
+    screen.innerHTML = backBtn() + upsetDots(1) + card(
       "They told you. That matters.",
       ["When someone comes to you and says directly that they were hurt or uncomfortable &mdash; they&rsquo;re doing one of the hardest things a person can do.", "So if someone told you? That&rsquo;s not an attack. That&rsquo;s them trusting you enough to be honest. And what you do with that honesty defines what happens next."],
       null,
@@ -12779,7 +13257,7 @@ if(id==="B_drinking_rule"){
 
         <div class="contentSection cs--warn">
           <div class="contentSection__head">
-            <span class="contentSection__icon">\u{1F4E9}</span>
+            <span class="contentSection__icon"><i class="ph-bold ph-envelope-open" aria-hidden="true"></i></span>
             <span class="contentSection__title">What you\u2019ve actually been given</span>
             <span class="contentSection__chevron">\u25BE</span>
           </div>
@@ -12792,7 +13270,7 @@ if(id==="B_drinking_rule"){
 
         <div class="contentSection">
           <div class="contentSection__head">
-            <span class="contentSection__icon">\u{1F500}</span>
+            <span class="contentSection__icon"><i class="ph-bold ph-shuffle" aria-hidden="true"></i></span>
             <span class="contentSection__title">Receiving vs. deflecting</span>
             <span class="contentSection__chevron">\u25BE</span>
           </div>
@@ -12816,7 +13294,7 @@ if(id==="B_drinking_rule"){
 
         <div class="contentSection">
           <div class="contentSection__head">
-            <span class="contentSection__icon">\u{1F4A1}</span>
+            <span class="contentSection__icon"><i class="ph-bold ph-lightbulb" aria-hidden="true"></i></span>
             <span class="contentSection__title">What comes next</span>
             <span class="contentSection__chevron">\u25BE</span>
           </div>
@@ -12836,7 +13314,7 @@ if(id==="B_drinking_rule"){
 
   // ===== Branch J2 — "They said fine but I still feel off" =====
   if(id==="J_upset_said_fine"){
-    screen.innerHTML = backBtn() + card(
+    screen.innerHTML = backBtn() + upsetDots(1) + card(
       "Trust that feeling.",
       ["You&rsquo;re here because something doesn&rsquo;t add up. They said &ldquo;fine&rdquo; &mdash; but it didn&rsquo;t feel fine. There&rsquo;s a gap between the words and the energy, and you noticed it.", "That instinct is worth more than you think. Don&rsquo;t talk yourself out of it."],
       null,
@@ -12844,7 +13322,7 @@ if(id==="B_drinking_rule"){
 
         <div class="contentSection">
           <div class="contentSection__head">
-            <span class="contentSection__icon">\u{1F6AB}</span>
+            <span class="contentSection__icon"><i class="ph-bold ph-prohibit" aria-hidden="true"></i></span>
             <span class="contentSection__title">Why \u201Cfine\u201D doesn\u2019t always mean fine</span>
             <span class="contentSection__chevron">\u25BE</span>
           </div>
@@ -12857,7 +13335,7 @@ if(id==="B_drinking_rule"){
 
         <div class="contentSection">
           <div class="contentSection__head">
-            <span class="contentSection__icon">\u{1F50D}</span>
+            <span class="contentSection__icon"><i class="ph-bold ph-magnifying-glass" aria-hidden="true"></i></span>
             <span class="contentSection__title">Signs that something might still be unresolved</span>
             <span class="contentSection__chevron">\u25BE</span>
           </div>
@@ -12874,7 +13352,7 @@ if(id==="B_drinking_rule"){
 
         <div class="contentSection">
           <div class="contentSection__head">
-            <span class="contentSection__icon">\u{1F4AC}</span>
+            <span class="contentSection__icon"><i class="ph-bold ph-chat-text" aria-hidden="true"></i></span>
             <span class="contentSection__title">What to do with this</span>
             <span class="contentSection__chevron">\u25BE</span>
           </div>
@@ -12894,11 +13372,22 @@ if(id==="B_drinking_rule"){
   }
 
   // ===== New Branch K =====
+
+  // Step progress helper for the not-sure-what-happened module
+  var notSureWhatDots = function(step) {
+    var steps = ['understanding'];
+    return '<div class="alcProgress" style="margin:10px 0 14px;">' +
+      steps.map(function(_,i){
+        return '<div class="alcDot ' + (i < step ? 'done' : '') + ' ' + (i === step ? 'active' : '') + '"></div>';
+      }).join('') +
+    '</div>';
+  };
+
   if(id==="K_not_sure_what"){
     const pathwayNoteK = state.entry
       ? personalNoteHtml('It sounds like <b>' + entryLabel(state.entry) + '</b>. Not having clarity can feel unsettling \u2014 let\u2019s slow it down and look more closely at what happened.')
       : '';
-    screen.innerHTML = backBtn() + pathwayNoteK + card(
+    screen.innerHTML = backBtn() + pathwayNoteK + `<div class="dsHeader"><div class="dsEyebrow">Vibe Check &mdash; Confusion &amp; Clarity</div></div>` + notSureWhatDots(0) + card(
       "Still not sure what happened",
       [
         "Confusion is common — especially when emotions, alcohol, or pressure were involved.",
@@ -12950,7 +13439,7 @@ if(id==="B_drinking_rule"){
     const pathwayNoteM = state.entry
       ? personalNoteHtml('It sounds like <b>' + entryLabel(state.entry) + '</b>. When things escalate during an encounter &mdash; beyond what was discussed or expected &mdash; it creates a specific kind of harm. Let\u2019s look at what happened.')
       : '';
-    screen.innerHTML = backBtn() + pathwayNoteM + card(
+    screen.innerHTML = backBtn() + pathwayNoteM + `<div class="dsHeader"><div class="dsEyebrow">Vibe Check &mdash; Escalation &amp; Boundaries</div></div>` + card(
       "Things escalated beyond what was agreed",
       ["This is about what happens when something started consensual, but then shifted &mdash; a new act, rougher than agreed, or a boundary crossed mid-encounter. Which is closest to what happened?"],
       null,
@@ -13181,7 +13670,7 @@ if(id==="B_drinking_rule"){
           </div>
         </details>
 
-        <div style="margin-top:14px; border-radius:16px; overflow:hidden; border:1.5px solid rgba(209,254,255,.25); background: linear-gradient(160deg, rgba(209,254,255,.06), rgba(19,132,143,.04));">
+        <div style="margin-top:14px; border-radius:var(--radius-lg); overflow:hidden; border:1.5px solid rgba(209,254,255,.25); background: rgba(209,254,255,.05);">
           <div style="padding:14px 16px;">
             <div style="font-size:10px; font-weight:900; text-transform:uppercase; letter-spacing:1px; color:var(--sb-mint); margin-bottom:6px;">The Common Thread</div>
             <div style="font-size:15px; font-weight:900; color:var(--sb-light); line-height:1.3;">Porn is not a consent education programme.</div>
@@ -13546,7 +14035,7 @@ if(id==="B_drinking_rule"){
           </div>
         </details>
 
-        <div style="margin-top:16px; border-radius:16px; overflow:hidden; border:1.5px solid rgba(255,160,80,.40); background: linear-gradient(160deg, rgba(255,160,80,.08), rgba(255,80,40,.05));">
+        <div style="margin-top:16px; border-radius:var(--radius-lg); overflow:hidden; border:1.5px solid rgba(255,160,80,.40); background: rgba(255,160,80,.06);">
           <div style="padding:14px 16px 12px; border-bottom:1px solid rgba(255,160,80,.18);">
             <div style="font-size:10px; font-weight:900; text-transform:uppercase; letter-spacing:1px; color:rgba(255,180,100,.85); margin-bottom:6px;">Re-Approach Script</div>
             <div style="font-size:15px; font-weight:900; color:var(--sb-light); line-height:1.2;">Talking to the person it happened with</div>
@@ -13593,10 +14082,11 @@ if(id==="B_drinking_rule"){
       : '';
     screen.innerHTML = backBtn() + pathwayNoteN + `
       <div class="dsHeader">
-        <div class="dsEyebrow">Vibe Check &mdash; Reading the Moment</div>
+        <div class="dsEyebrow">Vibe Check &mdash; Regret &amp; What It Means</div>
         <div class="h1">They said they regret it.</div>
         <div class="p" style="margin:0;">What that might mean &mdash; and what it&rsquo;s asking of you.</div>
       </div>
+      ${regretDots(0)}
       <div class="dsPanel">
         <div class="p" style="margin-top:4px;">
           When someone tells you they regret a sexual experience you shared, your first instinct might be to defend yourself, explain your intentions, or figure out what this means for <em>you</em>. That&rsquo;s normal &mdash; but it&rsquo;s not where to start.
@@ -13662,10 +14152,11 @@ if(id==="B_drinking_rule"){
   if(id==="N_regret_respond"){
     screen.innerHTML = backBtn() + `
       <div class="dsHeader">
-        <div class="dsEyebrow">Vibe Check &mdash; Reading the Moment</div>
+        <div class="dsEyebrow">Vibe Check &mdash; Regret &amp; What It Means</div>
         <div class="h1">How to respond.</div>
         <div class="p" style="margin:0;">What helps &mdash; and what makes it worse.</div>
       </div>
+      ${regretDots(1)}
       <div class="dsPanel">
         <div class="p" style="margin-top:4px;">
           If someone has told you they regret what happened, how you respond in this moment matters more than almost anything else. This is where trust is either rebuilt or destroyed.
@@ -13959,7 +14450,7 @@ if(id==="B_drinking_rule"){
     const pathwayNoteL = state.entry
       ? personalNoteHtml('It sounds like <b>' + entryLabel(state.entry) + '</b>. When someone is asleep or barely awake, the line on consent isn&rsquo;t blurry &mdash; it&rsquo;s one of the clearest ones there is. Let&rsquo;s walk through it.')
       : '';
-    screen.innerHTML = backBtn() + pathwayNoteL + card(
+    screen.innerHTML = backBtn() + pathwayNoteL + '<div class="dsHeader"><div class="dsEyebrow">Vibe Check &mdash; Sleep &amp; Consciousness</div></div>' + asleepDots(0) + card(
       "When someone is asleep or half-asleep",
       [
         "A person who is asleep cannot consent. They&rsquo;re not making decisions. They&rsquo;re unconscious.",
@@ -13971,7 +14462,7 @@ if(id==="B_drinking_rule"){
 
         <div class="contentSection cs--warn">
           <div class="contentSection__head">
-            <span class="contentSection__icon">\u{1F504}</span>
+            <span class="contentSection__icon"><i class="ph-bold ph-arrows-clockwise" aria-hidden="true"></i></span>
             <span class="contentSection__title">The \u201Cwe always do this\u201D trap</span>
             <span class="contentSection__chevron">\u25BE</span>
           </div>
@@ -13984,7 +14475,7 @@ if(id==="B_drinking_rule"){
 
         <div class="contentSection">
           <div class="contentSection__head">
-            <span class="contentSection__icon">\u{270B}</span>
+            <span class="contentSection__icon"><i class="ph-bold ph-hand-palm" aria-hidden="true"></i></span>
             <span class="contentSection__title">Why \u201Cthey didn\u2019t stop me\u201D isn\u2019t a yes</span>
             <span class="contentSection__chevron">\u25BE</span>
           </div>
@@ -13996,7 +14487,7 @@ if(id==="B_drinking_rule"){
 
         <div class="contentSection">
           <div class="contentSection__head">
-            <span class="contentSection__icon">\u{1F501}</span>
+            <span class="contentSection__icon"><i class="ph-bold ph-repeat" aria-hidden="true"></i></span>
             <span class="contentSection__title">If this has happened more than once</span>
             <span class="contentSection__chevron">\u25BE</span>
           </div>
@@ -14009,7 +14500,7 @@ if(id==="B_drinking_rule"){
 
         <div class="contentSection">
           <div class="contentSection__head">
-            <span class="contentSection__icon">\u{2705}</span>
+            <span class="contentSection__icon"><i class="ph-bold ph-check-circle" aria-hidden="true"></i></span>
             <span class="contentSection__title">The standard going forward</span>
             <span class="contentSection__chevron">\u25BE</span>
           </div>
@@ -14933,6 +15424,17 @@ if(state.emotion==="okay"){
   if(id==="nextSteps"){
     const recs = mergedRecommendations(state.scenario, state.emotion);
     const recIntro = (function(){
+      if(state.entry === "knew_harm"){
+        const emotionPhrases = {
+          guilt: "and you\u2019re sitting with guilt",
+          ashamed: "and you\u2019re carrying some shame",
+          anxious: "and there\u2019s anxiety present",
+          sad: "and there\u2019s sadness there",
+          numb: "and you\u2019re feeling disconnected",
+        };
+        const ep = emotionPhrases[state.emotion] || "";
+        return '<div class="personalNote" style="font-style:normal;">You came in knowing what happened' + (ep ? ' ' + ep : '') + '. These tools are the most direct next steps from where you are.</div>';
+      }
       if(state.scenario && state.emotion){
         const emotionPhrases = {
           guilt: "and you\u2019re sitting with some guilt",
@@ -15635,19 +16137,19 @@ if(state.emotion==="okay"){
             </div>
             <div class="rbSection">
               <div class="rbLabel">1. What are you apologizing for?</div>
-              <textarea class="rbTextarea" id="rbPart1" placeholder="${rp.part1}"></textarea>
+              <textarea class="rbTextarea" id="rbPart1" placeholder="${rp.part1}" aria-label="What are you apologizing for?"></textarea>
             </div>
             <div class="rbSection">
               <div class="rbLabel">2. Acknowledge the impact</div>
-              <textarea class="rbTextarea" id="rbPart2" placeholder="${rp.part2}"></textarea>
+              <textarea class="rbTextarea" id="rbPart2" placeholder="${rp.part2}" aria-label="Acknowledge the impact"></textarea>
             </div>
             <div class="rbSection">
               <div class="rbLabel">3. Respect their space</div>
-              <textarea class="rbTextarea" id="rbPart3" placeholder="${rp.part3}"></textarea>
+              <textarea class="rbTextarea" id="rbPart3" placeholder="${rp.part3}" aria-label="Respect their space"></textarea>
             </div>
             <div class="rbSection" style="margin-bottom:0;">
               <div class="rbLabel">4. Name the behavior change</div>
-              <textarea class="rbTextarea" id="rbPart4" placeholder="${rp.part4}"></textarea>
+              <textarea class="rbTextarea" id="rbPart4" placeholder="${rp.part4}" aria-label="Name the behavior change"></textarea>
             </div>
             <div class="rbBtnRow">
               <button class="rbBtn rbBtnGhost" id="rbBuildBtn" type="button">Build Message</button>
@@ -15884,7 +16386,7 @@ if(state.emotion==="okay"){
       `<div id="forgeSection">
         <div class="forgeWrap">
           <div class="forgeLabel">\uD83D\uDD28 Forge your commitment</div>
-          <textarea id="forgeInput" class="forgeTextarea" maxlength="200" placeholder="Write one concrete thing you\u2019ll do differently next time\u2026"></textarea>
+          <textarea id="forgeInput" class="forgeTextarea" maxlength="200" placeholder="Write one concrete thing you\u2019ll do differently next time\u2026" aria-label="Write one concrete thing you'll do differently"></textarea>
           <div id="forgeCharCounter" class="charCounter">0 / 200</div>
           <button id="forgeSubmitBtn" class="forgeBtn" disabled>Forge It \u2192</button>
         </div>
@@ -15899,9 +16401,11 @@ if(state.emotion==="okay"){
           </div>
         </div>
 
-        <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:16px;">
+        <div style="display:grid; gap:10px; margin-top:16px;">
           ${btn("Start over","restart","btn btnPrimary")}
-          ${btn("Explore pathways","pathMenu")}
+        </div>
+        <div style="margin-top:20px; text-align:center;">
+          <a href="https://tally.so/r/RGLGxQ" target="_blank" rel="noopener noreferrer" style="font-size:0.75rem; color:rgba(255,255,255,.45); text-decoration:none;">Have feedback on this tool? Let us know</a>
         </div>
       </div>`
     );
@@ -15947,49 +16451,6 @@ if(state.emotion==="okay"){
     });
 
     actions.restart=()=>reset();
-    actions.pathMenu=()=>go("pathMenu");
-    return;
-  }
-
-
-  if(id==="pathMenu"){
-    screen.innerHTML = backBtn() + card(
-      "Prototype pathways menu",
-      ["Jump directly into a pathway (for demo)."],
-      null,
-      grid(
-        btn("Freeze","jumpFreeze") +
-        btn("Pulled away","jumpPull") +
-        btn("Drinking","jumpDrink") +
-        btn("Pressure","jumpPressure") +
-        btn("Age/power","jumpAgePower") +
-        btn("Digital","jumpDigital") +
-        btn("Ignored no","jumpCoercion") +
-        btn("Relationship assumed consent","jumpRelationship") +
-        btn("Not sure they wanted it","jumpWanted") +
-        btn("Upset afterward","jumpUpset") +
-        btn("Still not sure","jumpNotSure") +
-        btn("Escalation / kink","jumpEscalation") +
-        btn("My friend did something","jumpFriend") +
-        btn("Comment/joke crossed a line","jumpComment") +
-        btn("Back to start","landing")
-      )
-    );
-    actions.jumpFreeze=()=>{go("A_freeze_whatItMeans");};
-    actions.jumpPull=()=>{go("C_pulledAway_signal");};
-    actions.jumpDrink=()=>{go("B_drinking_basics");};
-    actions.jumpPressure=()=>{go("D_pressure");};
-    actions.jumpAgePower=()=>{go("E_age_power");};
-    actions.jumpDigital=()=>{go("F_digital");};
-    actions.jumpCoercion=()=>{go("G_coercion");};
-    actions.jumpRelationship=()=>{go("H_relationship");};
-    actions.jumpWanted=()=>{go("I_not_sure_wanted");};
-    actions.jumpUpset=()=>{go("J_upset_after");};
-    actions.jumpNotSure=()=>{go("K_not_sure_what");};
-    actions.jumpEscalation=()=>{state.scenario="escalation"; go("M_escalation");};
-    actions.jumpFriend=()=>{state.entry="friend_pathway"; go("friend_landing");};
-    actions.jumpComment=()=>{state.scenario="comment_joke"; go("O_comment_joke");};
-    actions.landing=()=>go("landing");
     return;
   }
   if(id==="consentEdu"){
@@ -16017,13 +16478,11 @@ if(state.emotion==="okay"){
 
   if(id==="about"){
     screen.innerHTML = backBtn() + card(
-      "About this prototype",
+      "About Vibe Check",
       [
-        "This is a prototype of a private accountability and reflection tool. It is designed for moments of uncertainty — when someone is questioning whether they crossed a boundary or harmed someone.",
-        "Rather than labeling or judging, the tool guides users through structured reflection on the situation and their emotional responses. It helps people pause, examine specific behaviors, and understand how factors such as consent, pressure, alcohol, and power dynamics can shape impact.",
-        "The tool is non-punitive and educational. It does not collect personal information, assign labels, or make legal determinations. Its purpose is to reduce harm by increasing awareness, strengthening accountability, and building practical prevention skills that support lasting behavior change.",
-        "This version demonstrates how scenario-based pathways and emotional check-ins work together to guide safer choices moving forward."
-
+        "Vibe Check is a private reflection tool for moments of uncertainty \u2014 when you’re wondering whether a boundary may have been crossed or someone may have been hurt.",
+        "Instead of judging or labeling you, Vibe Check helps you slow down and think through what happened. It guides you step by step, helping you look at behaviors, reactions, and the context around them. Along the way, you’ll reflect on things that can shape how a situation is experienced, including consent, pressure, alcohol, miscommunication, and power dynamics.",
+        "Vibe Check doesn’t collect personal information, make legal decisions, or report anything. It’s a space to think honestly about a situation, understand it more clearly, and consider what responsibility and next steps might look like \u2014 with resources to support safer decisions.",
       ],
       null,
       grid(btn("Back","landing","btn btnPrimary"))
@@ -16032,19 +16491,6 @@ if(state.emotion==="okay"){
     return;
   }
 
-  if(id==="decoy"){
-    screen.innerHTML = backBtn() + card(
-      "Weekly Study Planner",
-      [
-        "Mon: Math • Tue: English • Wed: Science • Thu: History • Fri: Catch-up",
-        "Tip: Break big tasks into 15-minute blocks."
-      ],
-      null,
-      grid(btn("Return to prototype","landing","btn btnPrimary"))
-    );
-    actions.landing=()=>go("landing");
-    return;
-  }
 }
 
 render();
@@ -16323,7 +16769,7 @@ function rejectionScreen(){
       return `<div class="rejJPanel${i===rs.journalTab?' on':''}">
         <div class="rejJPrompt">${p.prompt}</div>
         <div class="rejJHint">${p.hint}</div>
-        <textarea class="rejJTa" data-rejjtextarea="${i}" placeholder="Write here... (this is just for you)">${val}</textarea>
+        <textarea class="rejJTa" data-rejjtextarea="${i}" placeholder="Write here... (this is just for you)" aria-label="Journal response">${val}</textarea>
         <div class="rejWC" id="rejWC${i}">${rejWC(val)} words</div>
         <div class="rejJAffirm${rejWC(val)>=10?' show':''}" id="rejJA${i}"><b>💫</b> ${p.affirm}</div>
       </div>`;}).join('');
@@ -16646,7 +17092,6 @@ function dsRender(){
     innerHTML = `
       <div class="p">Being online is part of everyday life — and so is navigating it safely. This tool covers the risks of sharing intimate images, what to do if something goes wrong, and how to support people around you.</div>
       <div class="note"><b>This tool covers:</b> Online dangers & predators · Sending nudes & knowing the risks · What to do if images are shared · How to support survivors</div>
-      <div class="note" style="border-color:rgba(209,254,255,.4);background:rgba(209,254,255,.06);">🔒 <b>Private:</b> Nothing you do here is stored or shared. This is a judgment-free zone.</div>
       <div class="dsNavRow"><button class="btn btnPrimary" data-dsaction="next">Let's start →</button></div>
     `;
   } else if(s === 1){
@@ -16937,8 +17382,6 @@ function myRender() {
       <div class="p">Most conversations about sexual violence aren't aimed at you. They talk about the problem without talking to the people who are most positioned to change it.</div>
       <div class="p" style="color:var(--muted);">This module is different. It's about what you've been taught, what actually plays out in practice, and what it looks like to hold yourself to a higher bar.</div>
       <div class="note"><b>What's ahead:</b> Where the rules come from · Bro-code and what it actually costs · Men as survivors · Rejection · The Standard · The Real Talk Test · Knowledge check</div>
-      <div class="note" style="border-color:rgba(209,254,255,.4);background:rgba(209,254,255,.06);">🔒 Nothing you do here is stored or shared.</div>
-      <div class="note" style="border-color:rgba(255,200,100,.3); background:rgba(255,200,100,.06); color:var(--sb-light);">This module covers sexual assault and violence. Take a break at any point — it'll be here when you come back.</div>
       <div class="dsNavRow"><button class="btn btnPrimary" data-myaction="next">Let's go →</button></div>
     `;
   } else if(s === 1) {
@@ -16980,10 +17423,10 @@ function myRender() {
     const broItems = MY_BROCODE_ITEMS.map(item => `
       <div class="dsStep" style="flex-direction:column; gap:6px;">
         <div style="display:flex; align-items:flex-start; gap:10px;">
-          <div class="dsStepNum" style="background:rgba(255,80,80,.15); border-color:rgba(255,80,80,.4); color:#ff6060;">✗</div>
+          <div class="dsStepNum" style="background:rgba(255,80,80,.15); border-color:rgba(255,80,80,.4); color:#e05555;">✗</div>
           <div class="dsStepText"><b>${item.label}</b></div>
         </div>
-        <div style="margin-left:38px; font-size:12px; color:rgba(255,160,160,.8); line-height:1.35;">↳ ${item.harm}</div>
+        <div style="margin-left:38px; font-size:12px; color:rgba(255,190,180,.9); line-height:1.35;">↳ ${item.harm}</div>
       </div>`).join('');
     innerHTML = `
       <div class="p">Bro-code isn't just locker room talk. It's a set of unspoken rules that shape what men do, what they stay silent about, and what they cover for.</div>
@@ -20302,7 +20745,7 @@ function trRender() {
       <div class="trField">
         <div class="h1" style="font-size:17px; margin-bottom:4px;">A — What happened?</div>
         <div class="trHint">Describe the situation in 1-2 sentences. Just the facts — what happened, where, and who was involved.</div>
-        <textarea class="trTextarea" id="trEventInput" placeholder="${trPh.event}">${trState.event}</textarea>
+        <textarea class="trTextarea" id="trEventInput" placeholder="${trPh.event}" aria-label="Describe what happened">${trState.event}</textarea>
       </div>
 
       <div class="note">
@@ -20322,7 +20765,7 @@ function trRender() {
       <div class="trField">
         <div class="h1" style="font-size:17px; margin-bottom:4px;">B — What went through your mind?</div>
         <div class="trHint">What was the "hot thought" — the belief that carried the most emotional charge? What story did you tell yourself about what happened?</div>
-        <textarea class="trTextarea" id="trBeliefInput" placeholder="${trPh2.belief}">${trState.belief}</textarea>
+        <textarea class="trTextarea" id="trBeliefInput" placeholder="${trPh2.belief}" aria-label="Describe your belief or hot thought">${trState.belief}</textarea>
       </div>
 
       <div class="note">
@@ -20361,7 +20804,7 @@ function trRender() {
                   <span class="trSliderName">${em.emoji} ${em.label}</span>
                   <span class="trSliderVal" id="trVal_${id}">${val}/100</span>
                 </div>
-                <input type="range" class="trSlider" min="0" max="100" value="${val}" data-trslider="${id}">
+                <input type="range" class="trSlider" min="0" max="100" value="${val}" data-trslider="${id}" aria-label="Rate intensity of ${em.label}">
               </div>
             `;
           }).join('')}
@@ -20380,7 +20823,7 @@ function trRender() {
       <div class="trField">
         <div class="h1" style="font-size:17px; margin-bottom:4px;">Evidence that supports the thought</div>
         <div class="trHint">What evidence do you have that your belief is true? What facts back it up?</div>
-        <textarea class="trTextarea" id="trEvidenceInput" placeholder="e.g. They didn't tell me until they were already gone. Last month they also made plans without me.">${trState.evidence}</textarea>
+        <textarea class="trTextarea" id="trEvidenceInput" placeholder="e.g. They didn't tell me until they were already gone. Last month they also made plans without me." aria-label="Evidence that supports the thought">${trState.evidence}</textarea>
       </div>
 
       <div class="note">
@@ -20399,7 +20842,7 @@ function trRender() {
       <div class="trField">
         <div class="h1" style="font-size:17px; margin-bottom:4px;">Evidence that does NOT support the thought</div>
         <div class="trHint">What facts challenge your belief? What would a trusted friend say? Has there been evidence to the contrary?</div>
-        <textarea class="trTextarea" id="trAgainstInput" placeholder="e.g. They did invite me to dinner last week. They might have decided last-minute. They could have just forgotten, not deliberately excluded me.">${trState.against}</textarea>
+        <textarea class="trTextarea" id="trAgainstInput" placeholder="e.g. They did invite me to dinner last week. They might have decided last-minute. They could have just forgotten, not deliberately excluded me." aria-label="Evidence against the thought">${trState.against}</textarea>
       </div>
 
       <div class="note">
@@ -20420,7 +20863,7 @@ function trRender() {
       <div class="trField">
         <div class="h1" style="font-size:17px; margin-bottom:4px;">Write a more balanced thought</div>
         <div class="trHint">Based on the evidence for and against, what's a steadier, more balanced way to see this? It doesn't have to be positive — just more accurate.</div>
-        <textarea class="trTextarea" id="trReframeInput" placeholder="e.g. They might not have meant to exclude me. I can tell them it hurt without assuming the worst. Last week we spent time together and it was fine.">${trState.reframe}</textarea>
+        <textarea class="trTextarea" id="trReframeInput" placeholder="e.g. They might not have meant to exclude me. I can tell them it hurt without assuming the worst. Last week we spent time together and it was fine." aria-label="Write a more balanced thought">${trState.reframe}</textarea>
       </div>
 
       ${selectedEms.length > 0 ? `
@@ -20436,7 +20879,7 @@ function trRender() {
                   <span class="trSliderName">${em.emoji} ${em.label} <span style="font-size:11px; color:var(--muted); font-weight:400;">(was ${origVal})</span></span>
                   <span class="trSliderVal" id="trNewVal_${id}">${newVal}/100</span>
                 </div>
-                <input type="range" class="trSlider" min="0" max="100" value="${newVal}" data-trnewslider="${id}">
+                <input type="range" class="trSlider" min="0" max="100" value="${newVal}" data-trnewslider="${id}" aria-label="Re-rate intensity of ${em.label}">
               </div>
             `;
           }).join('')}
